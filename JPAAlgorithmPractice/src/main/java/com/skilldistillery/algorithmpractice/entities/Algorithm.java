@@ -19,6 +19,17 @@ public class Algorithm {
 	
 	private int rating;
 	
+//	constructors 
+	public Algorithm() {} 
+	
+	public Algorithm(int id, String title, String description, int rating) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.description = description;
+		this.rating = rating;
+	}
+
 //  getters and setters 
 	public int getId() {
 		return id;
@@ -50,8 +61,14 @@ public class Algorithm {
 
 	public void setRating(int rating) {
 		this.rating = rating;
-	} 
+	}
+
 	
 //	toString
+	@Override
+	public String toString() {
+		return "Algorithm [id=" + id + ", title=" + title + ", description=" + description + ", rating=" + rating + "]";
+	} 
+
 	
 }

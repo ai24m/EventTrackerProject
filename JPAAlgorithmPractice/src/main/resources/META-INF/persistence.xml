@@ -6,6 +6,10 @@
     </provider>
 
 	<class>com.skilldistillery.algorithmpractice.entities.Algorithm</class>
+	<class>com.skilldistillery.algorithmpractice.entities.Comment</class>
+	<class>com.skilldistillery.algorithmpractice.entities.User</class>
+	<class>com.skilldistillery.algorithmpractice.entities.Solution</class>
+	<class>com.skilldistillery.algorithmpractice.entities.Language</class>
 	
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/algorithmpracticedb?useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=US/Mountain"/>
