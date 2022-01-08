@@ -41,8 +41,15 @@ class LanguageTest {
 	}
 
 	@Test
-	void test_User_mapping() {
+	void test_Language_mapping() {
 		assertNotNull(language);
 		assertEquals("Java", language.getName());
+	}
+	
+	@Test
+	void test_Language_Solution_OneToMany_mapping() {
+		assertNotNull(language);
+		assertNotNull(language.getSolution());
+		assertTrue(language.getSolution().size() > 0);
 	}
 }

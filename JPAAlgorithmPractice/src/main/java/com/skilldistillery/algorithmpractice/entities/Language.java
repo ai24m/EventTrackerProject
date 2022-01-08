@@ -1,9 +1,12 @@
 package com.skilldistillery.algorithmpractice.entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Language {
@@ -14,16 +17,20 @@ public class Language {
 	
 	private String name; 
 	
+	@OneToMany(mappedBy="language")
+	private List<Solution> solution;
+	
 //	constructors 
 	public Language() {}
 
-	public Language(int id, String name) {
+	public Language(int id, String name, List<Solution> solution) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.solution = solution;
 	}
 
-//	getters and setters 
+	//	getters and setters 
 	public int getId() {
 		return id;
 	}
@@ -40,7 +47,15 @@ public class Language {
 		this.name = name;
 	}
 
-//	toString 
+	public List<Solution> getSolution() {
+		return solution;
+	}
+
+	public void setSolution(List<Solution> solution) {
+		this.solution = solution;
+	}
+
+	//	toString 
 	@Override
 	public String toString() {
 		return "Language [id=" + id + ", name=" + name + "]";

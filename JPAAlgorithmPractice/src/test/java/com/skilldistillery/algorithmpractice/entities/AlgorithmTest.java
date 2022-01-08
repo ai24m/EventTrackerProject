@@ -2,8 +2,11 @@ package com.skilldistillery.algorithmpractice.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import javax.persistence.*;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -44,5 +47,18 @@ class AlgorithmTest {
 		assertNotNull(algorithm);
 		assertEquals("Two Number Sum", algorithm.getTitle());
 	}
-
+	
+	@Test
+	void test_Algorithm_Solution_OneToMany_mapping() {
+		assertNotNull(algorithm);
+		assertNotNull(algorithm.getSolutions());
+		assertTrue(algorithm.getSolutions().size() > 0);
+	}
+	
+	@Test
+	void test_Algorithm_User_ManyToOne_mapping() {
+		assertNotNull(algorithm);
+		assertNotNull(algorithm.getUser());
+		assertEquals(1, algorithm.getUser().getId());
+	}
 }

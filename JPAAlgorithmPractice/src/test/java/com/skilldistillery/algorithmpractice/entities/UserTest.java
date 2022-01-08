@@ -45,4 +45,26 @@ class UserTest {
 		assertNotNull(user);
 		assertEquals("admin", user.getUsername());
 	}
+	
+	@Test
+	void test_User_Comment_OneToMany_mapping() {
+		assertNotNull(user);
+		assertNotNull(user.getComments());
+		assertTrue(user.getComments().size() > 0);
+	}
+	
+	@Test
+	void test_User_Algorithm_OneToMany_mapping() {
+		assertNotNull(user);
+		assertNotNull(user.getAlgorithms());
+		assertTrue(user.getAlgorithms().size() > 0);
+
+	}
+	
+	@Test
+	void test_User_Solution_OneToMany_mapping() {
+		assertNotNull(user);
+		assertNotNull(user.getSolutions());
+		assertTrue(user.getSolutions().size() > 0);
+	}
 }

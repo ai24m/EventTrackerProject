@@ -41,8 +41,29 @@ class SolutionTest {
 	}
 
 	@Test
-	void test_User_mapping() {
+	void test_Solution_mapping() {
 		assertNotNull(solution);
 		assertEquals("Sample Solution", solution.getTitle());
+	}
+	
+	@Test
+	void test_Solution_Algorithm_ManyToOne_mapping() {
+		assertNotNull(solution);
+		assertNotNull(solution.getAlgorithm());
+		assertEquals(1, solution.getAlgorithm().getId());
+	}
+	
+	@Test
+	void test_Solution_User_ManyToOne_mapping() {
+		assertNotNull(solution);
+		assertNotNull(solution.getUser());
+		assertEquals(1, solution.getUser().getId());
+	}
+	
+	@Test
+	void test_Solution_Language_ManyToOne_mapping() {
+		assertNotNull(solution);
+		assertNotNull(solution.getLanguage());
+		assertEquals(3, solution.getLanguage().getId());
 	}
 }

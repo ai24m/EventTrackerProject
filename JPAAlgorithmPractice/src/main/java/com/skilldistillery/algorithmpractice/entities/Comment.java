@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -28,15 +30,26 @@ public class Comment {
 	@UpdateTimestamp
 	private LocalDateTime updatedAt;
 	
+	@ManyToOne
+	@JoinColumn(name="solution_id")
+	private Solution solution;
+	
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
+	
 //  constructors 
 	public Comment() {} 
 	
-	public Comment(int id, String content, LocalDateTime createdAt, LocalDateTime updatedAt) {
+	public Comment(int id, String content, LocalDateTime createdAt, LocalDateTime updatedAt, Solution solution,
+			User user) {
 		super();
 		this.id = id;
 		this.content = content;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
+		this.solution = solution;
+		this.user = user;
 	}
 
 //	getters and setters 
@@ -72,13 +85,26 @@ public class Comment {
 		this.updatedAt = updatedAt;
 	}
 
-//	toString 
+	public Solution getSolution() {
+		return solution;
+	}
+
+	public void setSolution(Solution solution) {
+		this.solution = solution;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	//	toString 
 	@Override
 	public String toString() {
 		return "Comment [id=" + id + ", content=" + content + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt
 				+ "]";
 	}
-	
-	
-	
 }

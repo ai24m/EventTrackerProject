@@ -44,6 +44,20 @@ class CommentTest {
 	void test_Comment_mapping() {
 		assertNotNull(comment);
 		assertNotNull(comment.getContent());
+		assertEquals(2021, comment.getCreatedAt().getYear());
 	}
-
+	
+	@Test
+	void test_Comment_Solution_ManyToOne_mapping() {
+		assertNotNull(comment);
+		assertNotNull(comment.getSolution());
+		assertEquals(1, comment.getSolution().getId());
+	}
+	
+	@Test
+	void test_Comment_User_ManyToOne_mapping() {
+		assertNotNull(comment);
+		assertNotNull(comment.getUser());
+		assertEquals(1, comment.getUser().getId());
+	}
 }
