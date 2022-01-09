@@ -42,3 +42,4 @@ The end goal of the EventTrackerProject was to become more comfortable creating 
 * Spring Boot
 * MAMP
 * MySQL/MySQL Workbench
+* Postman 
