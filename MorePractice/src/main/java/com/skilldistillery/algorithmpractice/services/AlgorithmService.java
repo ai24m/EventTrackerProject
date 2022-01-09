@@ -16,4 +16,6 @@ public interface AlgorithmService {
 	Algorithm updateAlgorithm(Integer id, Algorithm algorithm);
 
 	boolean deleteAlgorithmById(Integer id);
+
+	List<Algorithm> findByTitleDescLike(String keyword);
 }

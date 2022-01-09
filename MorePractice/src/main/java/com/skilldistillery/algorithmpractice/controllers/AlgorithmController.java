@@ -28,13 +28,19 @@ public class AlgorithmController {
 		return aSvc.getAllAlgorithms();
 	}
 	
-	@GetMapping("algorithms/{id}")
+	@GetMapping({"algorithms/{id}", "users/{userId}/algorithms/{id}"})
 	public Algorithm findAlgorithmById(@PathVariable Integer id, 
 			HttpServletResponse res) {
 		Algorithm algorithm = aSvc.findAlgorithmById(id);
 		if (algorithm == null) {
 			res.setStatus(404);
 		} return algorithm;
+	}
+	
+	@GetMapping("algorithms/search/{keyword}")
+	public List<Algorithm> getAlgorithmsByTitleOrDescription(@PathVariable String keyword, 
+			HttpServletResponse res) {
+		return aSvc.findByTitleDescLike(keyword);
 	}
 
 	@PostMapping("users/{userId}/algorithms")

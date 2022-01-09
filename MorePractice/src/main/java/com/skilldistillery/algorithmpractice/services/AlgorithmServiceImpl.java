@@ -55,4 +55,10 @@ public class AlgorithmServiceImpl implements AlgorithmService {
 			return deleted;
 		} return deleted;
 	} 
+	
+	@Override 
+	public List<Algorithm> findByTitleDescLike(String keyword) {
+		keyword = "%" + keyword + "%";
+		return aRepo.findByTitleLikeOrDescriptionLike(keyword, keyword);
+	}
 }
