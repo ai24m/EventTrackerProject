@@ -12,27 +12,27 @@ The end goal of the EventTrackerProject was to become more comfortable creating 
 | Return Type      | HTTP Method | URI                  | Purpose            |
 |------------------|-------------|----------------------|----------------------------------|
 | User            | GET         | /api/users/{userId}  |         Retrieve User      |
-| List Algorithm            | GET         | /api/users/{userId}/algorithms  |        Retrieve User Algorithms      |
-| List Solution            | GET         | /api/users/{userId}/solutions  |        Retrieve User Solutions      |
+| List \<Algorithm\>            | GET         | /api/users/{userId}/algorithms  |        Retrieve User Algorithms      |
+| List \<Solution\>            | GET         | /api/users/{userId}/solutions  |        Retrieve User Solutions      |
 | User            | PUT         | /api/users/{userId}  |        Update User      |
-| List Tracker            | GET         | /api/users/{userId}/trackers  |         Retrieve User Trackers      |
+| List \<Tracker\>            | GET         | /api/users/{userId}/trackers  |         Retrieve User Trackers      |
 | Tracker            | GET         | /api/users/{userId}/trackers/{tId}  |         Retrieve a Tracker      |
 | Tracker            | POST         | /api/users/{userId}/algorithms/{id}/trackers  <br> RequestBody: Tracker, userId, id  |   Create Tracker     |
 | Tracker            | PUT         | /api/users/{userId}/algorithms/{id}/trackers/{tId}  <br> RequestBody: Tracker, userId, id, tId  |    Update Tracker     |
 | Tracker            | DELETE         | /api/users/{userId}/algorithms/{id}/trackers/{tId}  |        Update Tracker      |
-| List Algorithm            | GET         | /api/algorithms |           Retrieve Algorithms      |
+| List \<Algorithm\>            | GET         | /api/algorithms |           Retrieve Algorithms      |
 | Algorithm            | GET         | /api/algorithms/{id} |           Retrieve a Algorithm      |
-| List Algorithm            | GET       | /api/algorithms/search/{keyword} |          Search Algorithm  with keyword    |
+| List \<Algorithm\>            | GET       | /api/algorithms/search/{keyword} |          Search Algorithm  with keyword    |
 | Algorithm            | POST         | /api/users/{userId}/algorithms <br> RequestBody: Algorithm, userId |   Create a Algorithm     |
 | Algorithm            | PUT         | /api/users/{userId}/algorithms/{id} <br> RequestBody: Algorithm, id, userId |  Update a Algorithm     |
 | Algorithm            | DELETE       | /api/users/{userId}/algorithms/{id} |   Delete a Algorithm      |
-| List Solution             | GET       | /api/algorithms/{id}/solutions |   Retrieve Algorithm Solutions     |
-| List Solution             | GET       | /api/algorithms/{id}/solutions/search/language/{lId} |   Retrieve Algorithm Solutions by Language    |
+| List \<Solution\>             | GET       | /api/algorithms/{id}/solutions |   Retrieve Algorithm Solutions     |
+| List \<Solution\>             | GET       | /api/algorithms/{id}/solutions/search/language/{lId} |   Retrieve Algorithm Solutions by Language    |
 | Solution            | GET       | /api/algorithms/{id}/solutions/{sId} | Retrieve a Algorithm Solution    |
 | Solution            | POST       | /api/algorithms/{id}/solutions  <br> RequestBody: Solution, id |  Create a Algorithm Solution   |
 | Solution            | PUT       | /api/algorithms/{id}/solutions/{sId}  <br> RequestBody: Solution, id, sId |  Update a Algorithm Solution   |
 | Solution            | DELETE       | /api/algorithms/{id}/solutions/{sId} |  Delete a Algorithm Solution    |
-| List Language             | GET       | /api/algorithms/{id}/solutions/search/language |  Retrieve Languages of Algorithm Solution   |
+| List \<Language\>             | GET       | /api/algorithms/{id}/solutions/search/language |  Retrieve Languages of Algorithm Solution   |
 
 
 
