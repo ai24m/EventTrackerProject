@@ -1,4 +1,4 @@
-# EventTrackerProject
+# EventTrackerProject 🌐
 
 ## Overview
 The More Practice, Algorithm Practice application was designed to track the performance of studious developers, or fresh graduates from a Coding Bootcamp, on their algorithmic questions skills. Furthermore, the format of the questions are designed to be answered in multiple programming languages of the users choice. Registered users are able to track their performance on one or multiple algorithm questions and update as they please. Sample solutions are provided by the admin, however, users are also encouraged to post their solutions and describe if they so desire.
