@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Language {
 //	fields 
@@ -17,6 +19,7 @@ public class Language {
 	
 	private String name; 
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="language")
 	private List<Solution> solution;
 	

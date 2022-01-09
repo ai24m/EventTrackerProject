@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity 
 public class Algorithm {
 
@@ -24,8 +26,13 @@ public class Algorithm {
 	
 	private int rating;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "algorithm")
 	private List<Solution> solutions;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "algorithm")
+	private List<Tracker> trackers;
 	
 	@ManyToOne
 	@JoinColumn(name="user_id")
@@ -34,13 +41,15 @@ public class Algorithm {
 //	constructors 
 	public Algorithm() {} 
 
-	public Algorithm(int id, String title, String description, int rating, List<Solution> solutions, User user) {
+	public Algorithm(int id, String title, String description, int rating, List<Solution> solutions,
+			List<Tracker> trackers, User user) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.description = description;
 		this.rating = rating;
 		this.solutions = solutions;
+		this.trackers = trackers;
 		this.user = user;
 	}
 
@@ -85,6 +94,14 @@ public class Algorithm {
 		this.solutions = solutions;
 	}
 	
+	public List<Tracker> getTrackers() {
+		return trackers;
+	}
+
+	public void setComments(List<Tracker> trackers) {
+		this.trackers = trackers;
+	}
+
 	public User getUser() {
 		return user;
 	}

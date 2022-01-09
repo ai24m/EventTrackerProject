@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity 
 public class User {
 	
@@ -22,26 +24,29 @@ public class User {
 	
 	private String email;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="user")
-	private List <Comment> comments;
+	private List <Tracker> trackers;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="user")
 	private List<Algorithm> algorithms;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="user")
 	private List<Solution> solutions;
 	
 //	constructors 
 	public User() {} 
 
-	public User(int id, String name, String username, String email, List<Comment> comments, List<Algorithm> algorithms,
+	public User(int id, String name, String username, String email, List<Tracker> trackers, List<Algorithm> algorithms,
 			List<Solution> solutions) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.username = username;
 		this.email = email;
-		this.comments = comments;
+		this.trackers = trackers;
 		this.algorithms = algorithms;
 		this.solutions = solutions;
 	}
@@ -79,12 +84,12 @@ public class User {
 		this.email = email;
 	}
 	
-	public List<Comment> getComments() {
-		return comments;
+	public List<Tracker> getTrackers() {
+		return trackers;
 	}
 
-	public void setComments(List<Comment> comments) {
-		this.comments = comments;
+	public void setComments(List<Tracker> trackers) {
+		this.trackers = trackers;
 	}
 
 	public List<Algorithm> getAlgorithms() {

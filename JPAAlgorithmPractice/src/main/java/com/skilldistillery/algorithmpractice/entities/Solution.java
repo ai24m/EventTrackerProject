@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Solution {
 //	fields 
@@ -15,13 +17,12 @@ public class Solution {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id; 
 	
-	private String title;
-	
 	@Column(name="image_url")
 	private String imageUrl;
 	
 	private String description;
 	
+	@JsonIgnore
 	@ManyToOne 
 	@JoinColumn(name="algorithm_id")
 	private Algorithm algorithm; 
@@ -39,11 +40,10 @@ public class Solution {
 		super();
 	}
 
-	public Solution(int id, String title, String imageUrl, String description, Algorithm algorithm, User user,
+	public Solution(int id, String imageUrl, String description, Algorithm algorithm, User user,
 			Language language) {
 		super();
 		this.id = id;
-		this.title = title;
 		this.imageUrl = imageUrl;
 		this.description = description;
 		this.algorithm = algorithm;
@@ -58,14 +58,6 @@ public class Solution {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
 	}
 
 	public String getImageUrl() {
@@ -111,7 +103,7 @@ public class Solution {
 	//	toString 
 	@Override
 	public String toString() {
-		return "Solution [id=" + id + ", title=" + title + ", imageUrl=" + imageUrl + ", description=" + description
+		return "Solution [id=" + id + ", imageUrl=" + imageUrl + ", description=" + description
 				+ "]";
 	} 
 }

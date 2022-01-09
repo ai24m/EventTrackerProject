@@ -43,7 +43,7 @@ class SolutionTest {
 	@Test
 	void test_Solution_mapping() {
 		assertNotNull(solution);
-		assertEquals("Sample Solution", solution.getTitle());
+		assertEquals(1, solution.getId());
 	}
 	
 	@Test

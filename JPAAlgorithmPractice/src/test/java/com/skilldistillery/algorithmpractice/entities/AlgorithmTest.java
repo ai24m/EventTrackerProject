@@ -61,4 +61,11 @@ class AlgorithmTest {
 		assertNotNull(algorithm.getUser());
 		assertEquals(1, algorithm.getUser().getId());
 	}
+	
+	@Test
+	void test_Algorithm_Tracker_ManyToOne_mapping() {
+		assertNotNull(algorithm);
+		assertNotNull(algorithm.getTrackers());
+		assertTrue(algorithm.getTrackers().size() > 0);
+	}
 }

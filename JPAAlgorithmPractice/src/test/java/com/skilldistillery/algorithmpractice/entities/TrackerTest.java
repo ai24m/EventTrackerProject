@@ -12,11 +12,11 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class CommentTest {
+class TrackerTest {
 
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Comment comment;
+	private Tracker comment;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -31,7 +31,7 @@ class CommentTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		comment = em.find(Comment.class, 1);
+		comment = em.find(Tracker.class, 1);
 	}
 
 	@AfterEach
@@ -48,10 +48,10 @@ class CommentTest {
 	}
 	
 	@Test
-	void test_Comment_Solution_ManyToOne_mapping() {
+	void test_Comment_Algorithm_ManyToOne_mapping() {
 		assertNotNull(comment);
-		assertNotNull(comment.getSolution());
-		assertEquals(1, comment.getSolution().getId());
+		assertNotNull(comment.getAlgorithm());
+		assertEquals(1, comment.getAlgorithm().getId());
 	}
 	
 	@Test

@@ -6,7 +6,7 @@
     </provider>
 
 	<class>com.skilldistillery.algorithmpractice.entities.Algorithm</class>
-	<class>com.skilldistillery.algorithmpractice.entities.Comment</class>
+	<class>com.skilldistillery.algorithmpractice.entities.Tracker</class>
 	<class>com.skilldistillery.algorithmpractice.entities.User</class>
 	<class>com.skilldistillery.algorithmpractice.entities.Solution</class>
 	<class>com.skilldistillery.algorithmpractice.entities.Language</class>

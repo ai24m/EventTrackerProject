@@ -49,8 +49,8 @@ class UserTest {
 	@Test
 	void test_User_Comment_OneToMany_mapping() {
 		assertNotNull(user);
-		assertNotNull(user.getComments());
-		assertTrue(user.getComments().size() > 0);
+		assertNotNull(user.getTrackers());
+		assertTrue(user.getTrackers().size() > 0);
 	}
 	
 	@Test

@@ -1,6 +1,9 @@
 # EventTrackerProject
 
 ## Overview
+The More Practice, Algorithm Practice application was designed to track how a studious
+developer graduating from Bootcamp is performing on algorithmic questions of their
+programming language of choice. 
 
 ### REST API
 

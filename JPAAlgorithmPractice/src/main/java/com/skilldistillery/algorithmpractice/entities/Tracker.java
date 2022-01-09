@@ -13,8 +13,10 @@ import javax.persistence.ManyToOne;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity 
-public class Comment {
+public class Tracker {
 //	fields
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,25 +32,27 @@ public class Comment {
 	@UpdateTimestamp
 	private LocalDateTime updatedAt;
 	
+	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name="solution_id")
-	private Solution solution;
+	@JoinColumn(name="algorithm_id")
+	private Algorithm algorithm;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
 	
 //  constructors 
-	public Comment() {} 
+	public Tracker() {} 
 	
-	public Comment(int id, String content, LocalDateTime createdAt, LocalDateTime updatedAt, Solution solution,
+	public Tracker(int id, String content, LocalDateTime createdAt, LocalDateTime updatedAt, Algorithm algorithm,
 			User user) {
 		super();
 		this.id = id;
 		this.content = content;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
-		this.solution = solution;
+		this.algorithm = algorithm;
 		this.user = user;
 	}
 
@@ -85,12 +89,12 @@ public class Comment {
 		this.updatedAt = updatedAt;
 	}
 
-	public Solution getSolution() {
-		return solution;
+	public Algorithm getAlgorithm() {
+		return algorithm;
 	}
 
-	public void setSolution(Solution solution) {
-		this.solution = solution;
+	public void setAlgorithm(Algorithm algorithm) {
+		this.algorithm = algorithm;
 	}
 
 	public User getUser() {
