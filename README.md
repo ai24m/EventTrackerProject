@@ -32,7 +32,7 @@ The end goal of the EventTrackerProject was to become more comfortable creating 
 | Solution            | POST       | /api/algorithms/{id}/solutions  <br> RequestBody: Solution, id |  Create a Algorithm Solution   |
 | Solution            | PUT       | /api/algorithms/{id}/solutions/{sId}  <br> RequestBody: Solution, id, sId |  Update a Algorithm Solution   |
 | Solution            | DELETE       | /api/algorithms/{id}/solutions/{sId} |  Delete a Algorithm Solution    |
-| List Language             | GET       | algorithms/{id}/solutions/search/language |  Retrieve Languages of Algorithm Solution   |
+| List Language             | GET       | /api/algorithms/{id}/solutions/search/language |  Retrieve Languages of Algorithm Solution   |
 
 
 
