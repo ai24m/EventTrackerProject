@@ -1,5 +1,7 @@
 package com.skilldistillery.algorithmpractice.services;
 
+import java.util.List;
+
 import com.skilldistillery.algorithmpractice.entities.Solution;
 
 public interface SolutionService {
@@ -12,6 +14,6 @@ public interface SolutionService {
 
 	boolean deleteSolutionById(Integer sId);
 
-
+	List<Solution> getSolutionByLanguage(Integer lId);
 
 }

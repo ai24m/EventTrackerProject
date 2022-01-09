@@ -1,5 +1,6 @@
 package com.skilldistillery.algorithmpractice.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.skilldistillery.algorithmpractice.entities.Algorithm;
 import com.skilldistillery.algorithmpractice.entities.Solution;
 import com.skilldistillery.algorithmpractice.repositories.AlgorithmRepository;
+import com.skilldistillery.algorithmpractice.repositories.LanguageRepository;
 import com.skilldistillery.algorithmpractice.repositories.SolutionRepository;
 
 @Service 
@@ -18,6 +20,9 @@ public class SolutionServiceImpl implements SolutionService {
 	
 	@Autowired 
 	private AlgorithmRepository aRepo;
+	
+	@Autowired 
+	private LanguageRepository lRepo;
 
 	@Override
 	public Solution findSolutionById(Integer sId) {
@@ -61,7 +66,15 @@ public class SolutionServiceImpl implements SolutionService {
 			deleted = true;
 			return deleted;
 		} return deleted;
-	} 
+	}
+
+	@Override
+	public List<Solution> getSolutionByLanguage(Integer lId) {
+		if (! lRepo.existsById(lId)) {
+			return null;
+		} List<Solution> solutions = sRepo.findByLanguage_Id(lId);
+		return solutions;
+	}
 
 	
 }

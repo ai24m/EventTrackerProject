@@ -49,6 +49,15 @@ public class SolutionController {
 		} return null;
 	}
 	
+	@GetMapping("algorithms/{id}/solutions/search/language/{lId}")
+	public List<Solution> getSolutionByLanguage(@PathVariable Integer lId, 
+			HttpServletResponse res) {
+		List<Solution> posts = sSvc.getSolutionByLanguage(lId); 
+		if (posts == null) {
+			res.setStatus(404);
+		} return posts;
+	}
+	
 	@PostMapping("algorithms/{id}/solutions")
 	public Solution createSolution(@RequestBody Solution solution, @PathVariable Integer id,
 			HttpServletResponse res, HttpServletRequest req) {
