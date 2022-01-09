@@ -14,7 +14,7 @@ The end goal of the EventTrackerProject was to become more comfortable creating 
 | User            | PUT         | /api/users/{userId}  |        Update User      |
 | List Tracker            | GET         | /api/users/{userId}/trackers  |         Retrieve User Trackers      |
 | Tracker            | GET         | /api/users/{userId}/trackers/{tId}  |         Retrieve a Tracker      |
-| Tracker            | POST         | /api/users/{userId}/algorithms/{id}/trackers  @RequestBody: Tracker, userId, id  |   Create Tracker     |
+| Tracker            | POST         | /api/users/{userId}/algorithms/{id}/trackers  <br> RequestBody: Tracker, userId, id  |   Create Tracker     |
 | Tracker            | PUT         | /api/users/{userId}/algorithms/{id}/trackers/{tId}  @RequestBody: Tracker, userId, id, tId  |    Update Tracker     |
 | Tracker            | DELETE         | /api/users/{userId}/algorithms/{id}/trackers/{tId}  |        Update Tracker      |
 | List Algorithm            | GET         | /api/algorithms |           Retrieve Algorithms      |
