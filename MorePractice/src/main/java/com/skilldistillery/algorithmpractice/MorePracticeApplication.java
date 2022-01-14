@@ -2,9 +2,15 @@ package com.skilldistillery.algorithmpractice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class MorePracticeApplication {
+public class MorePracticeApplication extends SpringBootServletInitializer {
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(MorePracticeApplication.class);
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(MorePracticeApplication.class, args);
