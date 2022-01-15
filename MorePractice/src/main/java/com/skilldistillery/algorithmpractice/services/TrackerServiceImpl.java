@@ -1,5 +1,6 @@
 package com.skilldistillery.algorithmpractice.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,10 @@ public class TrackerServiceImpl implements TrackerService {
 	@Override
 	public Tracker findTrackerById(Integer tId) {
 		Optional<Tracker> tOpt = tRepo.findById(tId);
+		Algorithm algorithm = tRepo.findByAlgorithm_Id(tId);
 		if (tOpt.isPresent()) {
 			Tracker tracker = tOpt.get();
+			tracker.setAlgorithm(algorithm);
 			return tracker;
 		} return null;
 	}
@@ -71,6 +74,20 @@ public class TrackerServiceImpl implements TrackerService {
 			deleted = true;
 			return deleted;
 		} return deleted;
-	} 
+	}
 
+	@Override
+	public List<Tracker> findTrackersByAlgorithmId(Integer id) {
+		Algorithm algorithm = tRepo.findByAlgorithm_Id(id);
+		if (algorithm != null) {
+			List <Tracker> trackers = algorithm.getTrackers();
+			return trackers;
+		} return null;
+	}
+
+	@Override
+	public List<Tracker> findAllTrackers() {
+		List<Tracker> trackers = tRepo.findAll();
+		return trackers;
+	}
 }

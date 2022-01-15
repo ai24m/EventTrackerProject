@@ -28,8 +28,8 @@ public class AlgorithmController {
 		return aSvc.getAllAlgorithms();
 	}
 	
-	@GetMapping({"algorithms/{id}", "users/{userId}/algorithms/{id}"})
-	public Algorithm findAlgorithmById(@PathVariable Integer id, 
+	@GetMapping({"users/{userId}/algorithms/{id}", "algorithms/find/{id}"})
+	public Algorithm findAlgorithmById(@PathVariable Integer id, @PathVariable Algorithm a,
 			HttpServletResponse res) {
 		Algorithm algorithm = aSvc.findAlgorithmById(id);
 		if (algorithm == null) {
@@ -40,7 +40,10 @@ public class AlgorithmController {
 	@GetMapping("algorithms/search/{keyword}")
 	public List<Algorithm> getAlgorithmsByTitleOrDescription(@PathVariable String keyword, 
 			HttpServletResponse res) {
-		return aSvc.findByTitleDescLike(keyword);
+		List <Algorithm> algorithms = aSvc.findByTitleDescLike(keyword);;
+		if (algorithms == null) {
+			res.setStatus(404);
+		} return algorithms;
 	}
 
 	@PostMapping("users/{userId}/algorithms")

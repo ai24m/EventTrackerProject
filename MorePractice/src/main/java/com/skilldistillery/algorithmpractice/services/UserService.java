@@ -9,4 +9,6 @@ public interface UserService {
 
 	User updateUserInfo(User user, Integer userId);
 
+	User findUserByUsernameAndPassword(String username, String password);
+
 }

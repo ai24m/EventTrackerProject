@@ -25,9 +25,11 @@ CREATE TABLE IF NOT EXISTS `user` (
   `name` VARCHAR(100) NOT NULL,
   `username` VARCHAR(45) NOT NULL,
   `email` VARCHAR(200) NOT NULL,
+  `password` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `username_UNIQUE` (`username` ASC),
-  UNIQUE INDEX `email_UNIQUE` (`email` ASC))
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC),
+  UNIQUE INDEX `password_UNIQUE` (`password` ASC))
 ENGINE = InnoDB;
 
 
@@ -143,9 +145,9 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `algorithmpracticedb`;
-INSERT INTO `user` (`id`, `name`, `username`, `email`) VALUES (1, 'admin', 'admin', 'admin@admin.com');
-INSERT INTO `user` (`id`, `name`, `username`, `email`) VALUES (2, 'user1 ', 'user1', 'user1@user1.com');
-INSERT INTO `user` (`id`, `name`, `username`, `email`) VALUES (3, 'user2', 'user2', 'user2@user2.com');
+INSERT INTO `user` (`id`, `name`, `username`, `email`, `password`) VALUES (1, 'admin', 'admin', 'admin@admin.com', 'admin');
+INSERT INTO `user` (`id`, `name`, `username`, `email`, `password`) VALUES (2, 'user1 ', 'user1', 'user1@user1.com', 'user1');
+INSERT INTO `user` (`id`, `name`, `username`, `email`, `password`) VALUES (3, 'user2', 'user2', 'user2@user2.com', 'user2');
 
 COMMIT;
 
@@ -170,7 +172,7 @@ COMMIT;
 START TRANSACTION;
 USE `algorithmpracticedb`;
 INSERT INTO `tracker` (`id`, `content`, `created_at`, `updated_at`, `user_id`, `algorithm_id`) VALUES (1, 'pretty easy!', '2021-01-01 00:00:00 ', '2021-01-01 00:00:00 ', 1, 1);
-INSERT INTO `tracker` (`id`, `content`, `created_at`, `updated_at`, `user_id`, `algorithm_id`) VALUES (2, 'was pretty tough, forgot how to access the elements of an array', '2021-01-02 09:00:00', '2021-01-02 09:00:00', 2, 1);
+INSERT INTO `tracker` (`id`, `content`, `created_at`, `updated_at`, `user_id`, `algorithm_id`) VALUES (2, 'was pretty tough, forgot how to access the elements of an array', '2021-01-02 09:00:00', '2021-01-02 09:00:00', 1, 1);
 INSERT INTO `tracker` (`id`, `content`, `created_at`, `updated_at`, `user_id`, `algorithm_id`) VALUES (3, 'got this one pretty quick, maybe tackle another solution ', '2021-01-02 09:00:00', '2021-01-02 09:00:00', 2, 2);
 INSERT INTO `tracker` (`id`, `content`, `created_at`, `updated_at`, `user_id`, `algorithm_id`) VALUES (4, 'i didn\'t even know what binary search was lol', '2021-01-03 09:00:00', '2021-01-03 10:00:00', 2, 3);
 INSERT INTO `tracker` (`id`, `content`, `created_at`, `updated_at`, `user_id`, `algorithm_id`) VALUES (5, 'in progress', '2021-01-03 10:30:00', '2021-01-03 10:30:00', 2, 4);
@@ -197,7 +199,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `algorithmpracticedb`;
-INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (1, 'https://github.com/ai24m/EventTrackerProject/blob/main/images/a1sgo1.PNG', 1, 'Go sample solution 1 ', 3, 1);
+INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (1, 'images/a1sgo1.PNG', 1, 'Go sample solution 1 ', 3, 1);
 INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (2, 'https://github.com/ai24m/EventTrackerProject/blob/main/images/a1sgo2.PNG', 1, 'I found another solution that should work with GO', 3, 3);
 INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (3, 'https://github.com/ai24m/EventTrackerProject/blob/main/images/a1sjava1.PNG', 1, 'Java sample solution 1 to question 1 ', 1, 1);
 INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (4, 'https://github.com/ai24m/EventTrackerProject/blob/main/images/a1sjava2.PNG', 1, 'Another possible way to solve...', 1, 3);

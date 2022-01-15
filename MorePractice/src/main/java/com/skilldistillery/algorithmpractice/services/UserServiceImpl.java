@@ -30,4 +30,12 @@ public class UserServiceImpl implements UserService {
 			return uRepo.save(user);
 		} return null;
 	}
+	
+	@Override
+	public User findUserByUsernameAndPassword(String username, String password) {
+		User user = uRepo.findByUsernameAndPassword(username, password); 
+		if (user != null) {
+			return user;
+		} return null;
+	}
 }

@@ -1,5 +1,7 @@
 package com.skilldistillery.algorithmpractice.services;
 
+import java.util.List;
+
 import com.skilldistillery.algorithmpractice.entities.Tracker;
 
 public interface TrackerService {
@@ -11,5 +13,9 @@ public interface TrackerService {
 	Tracker updateTracker(Integer tId, Tracker tracker, Integer userId, Integer id);
 
 	boolean deleteTrackerById(Integer tId);
+
+	List<Tracker> findTrackersByAlgorithmId(Integer id);
+
+	List<Tracker> findAllTrackers();
 
 }

@@ -24,16 +24,7 @@ public class TrackerController {
 	@Autowired 
 	private AlgorithmService aSvc;
 	
-	@GetMapping("users/{userId}/trackers")
-	public List<Tracker> findTrackersByUserId(@PathVariable Integer userId, 
-			HttpServletResponse res) {
-		User user = uSvc.findUserById(userId);
-		if (user == null) {
-			res.setStatus(404);
-		} return user.getTrackers(); 
-	}
-	
-	@GetMapping({"users/{userId}/trackers/{tId}", "users/{userId}/algorithms/{id}/trackers/{tId}"})
+	@GetMapping("users/{userId}/trackers/{tId}")
 	public Tracker findTrackerById(@PathVariable Integer userId, 
 			@PathVariable Integer tId, 
 			HttpServletResponse res) {
@@ -42,8 +33,23 @@ public class TrackerController {
 			res.setStatus(404);
 		} else {
 			Tracker tracker = tSvc.findTrackerById(tId); 
+			if (tracker.getUpdatedAt().getDayOfMonth() == 0) {
+				
+			};
 			return tracker;
 		} return null;
+	}
+	
+	@GetMapping("algorithms/{id}/trackers/")
+	public List<Tracker> getTrackersForAlgorithm(@PathVariable Integer id) {
+		List<Tracker> trackers = tSvc.findTrackersByAlgorithmId(id);
+		return trackers; 
+	}
+	
+	@GetMapping("/find/trackers/")
+	public List<Tracker> getAllTrackers() {
+		List<Tracker> trackers = tSvc.findAllTrackers();
+		return trackers; 
 	}
 	
 	@PostMapping("users/{userId}/algorithms/{id}/trackers")

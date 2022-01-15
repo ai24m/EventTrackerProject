@@ -32,7 +32,7 @@ public class Tracker {
 	@UpdateTimestamp
 	private LocalDateTime updatedAt;
 	
-	@JsonIgnore
+//	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="algorithm_id")
 	private Algorithm algorithm;
