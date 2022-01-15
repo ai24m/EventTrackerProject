@@ -4,7 +4,7 @@ window.addEventListener('load', function(e) {
 });
 
 function init() {
-	getAllAlgorithms(); 
+  getAllAlgorithms();
   // document.trackerForm.addTracker.addEventListener('click', function(event) {
   //   event.preventDefault();
   //   var filmId = document.filmForm.filmId.value;
@@ -15,9 +15,16 @@ function init() {
 }
 
 function displayError(message) {
-  let body = document.body('body');
+  let body = document.body;
   body.textContent = message;
 }
+
+// function displaySuccess() {
+//   let trackerDiv = document.getElementById('trackerData');
+//   trackerDiv.textContent = '';
+//   let body = document.body('body');
+//   body.textContent = 'Delete successful';
+// }
 
 function getAllAlgorithms() {
 	let xhr = new XMLHttpRequest();
@@ -49,80 +56,217 @@ function getAllAlgorithms() {
 // }
 
 function displayAllAlgorithms(allAlgorithms) {
-  let dataDiv = document.getElementById('algorithmData');
-  dataDiv.textContent = '';
+  let algorithmDiv = document.getElementsByClassName('algorithmData');
+  
+  algorithmDiv.textContent = '';
+  
+  // let ul = document.createElement('ul');
+  // document.body.appendChild(ul); 
 
   for (let a of allAlgorithms) {  
-	  let title = document.createElement('h3'); 
-	  let rating = document.createElement('h5');
-	  rating.textContent = ' ▶ Difficulty: ' + a.rating;
-	  title.textContent = a.title + rating.textContent; 
-	  dataDiv.appendChild(title);
+    let algorithmDiv = document.createElement('div');
+    algorithmDiv.name = 'algorithmData';
+    document.body.appendChild(algorithmDiv);
+
+    let title = document.createElement('h3');
+    title.id = "title"; 
+	  // let title = document.getElementById('title'); 
+    // let title = document.createElement('li'); 
+	  title.textContent = a.title + ' ▶ Difficulty: ' + a.rating; 
+    algorithmDiv.appendChild(title);
 	  
-	  let description = document.createElement('p'); 
+	  // let description = document.getElementById('description'); 
+    let description = document.createElement('p');
+    description.id = 'description';
 	  description.textContent = a.description; 
-	  dataDiv.appendChild(description);
+    algorithmDiv.appendChild(description);
 	  
 	  let solutionBtn = document.createElement('input'); 
     solutionBtn.type = "submit";
     solutionBtn.name = "solutions"; 
     solutionBtn.value = "View Solutions";
-    dataDiv.appendChild(solutionBtn); 
+    algorithmDiv.appendChild(solutionBtn); 
   
     solutionBtn.addEventListener('click', function(event) {
       event.preventDefault();
       // dataDiv.textContent = '';
       getSolutionsForAlgorithm(a.id, a);
-      // event.target.remove();
+      document.body.algorithmDiv.remove();
     }); 
 
     let trackerBtn = document.createElement('input'); 
     trackerBtn.type = "submit";
     trackerBtn.name = "trackers"; 
     trackerBtn.value = "View Trackers";
-    dataDiv.appendChild(trackerBtn); 
+    algorithmDiv.appendChild(trackerBtn); 
 
     trackerBtn.addEventListener('click', function(event) {
       event.preventDefault();
       getTrackers(a);
+      event.target.parentElement.textContent = ' ';
       // createTrackerForAlgorithm(newTracker, a.id);
     });
   }
 }
 
 function displayTracker(tracker, algorithm){
-    var trackerDiv = document.getElementById('trackerData');
-    trackerDiv.textContent = '';
-    console.log(tracker);
-    console.log(algorithm);
+    // window.location.href = 'viewtracker.html';
+    let data = document.getElementsByClassName('data');
+    data.textContent = '';
 
-    for (let t of tracker) {
-      console.log(t.algorithm.id);
-      if (t.algorithm.id === algorithm.id) {
-        let tDiv = document.createElement('div'); 
-        trackerDiv.appendChild(tDiv); 
+    let algorithmDiv = document.createElement('div');
+    algorithmDiv.name = 'algorithmData';
+    data[0].appendChild(algorithmDiv);
 
-        let content = document.createElement('h1'); 
-        content.textContent = t.content; 
-        tDiv.appendChild(content);
+    let title = document.createElement('h3');
+    title.id = "title"; 
+	  // let title = document.getElementById('title'); 
+	  title.textContent = algorithm.title + ' ▶ Difficulty: ' + algorithm.rating; 
+    algorithmDiv.appendChild(title);
+	  
+	  // let description = document.getElementById('description'); 
+    let description = document.createElement('p');
+    description.id = 'description';
+	  description.textContent = algorithm.description; 
+    algorithmDiv.appendChild(description);
+
+    // let trackerDiv = document.getElementById('trackerData'); 
+    // trackerDiv.textContent = '';
+
+    
+
+    let count = Object.getOwnPropertyNames(tracker);
+    if (count.length > 1) {
+      for (let t of tracker) {
+        console.log(t.algorithm.id);
+        if (t.algorithm.id === algorithm.id) {
+          console.log(t);
+           
+          let list = document.createElement('ul');
+          algorithmDiv.appendChild(list);
+
+          let content = document.createElement('li'); 
+          content.textContent = t.content;
+          list.appendChild(content);
+
+          let timeStamp = document.createElement('li'); 
+          timeStamp.textContent = t.createdAt + " " + t.updatedAt;
+          list.appendChild(timeStamp);
+
+          // let content = document.createElement('h1'); 
+          // let content = document.createElement('li')[0];
+          // content.textContent = t.content; 
+          // list.appendChild(content);
+          
+          // let timeStamp = document.createElement('p');
+          // timeStamp.textContent = t.createdAt + " " + t.updatedAt;
+          // trackerDiv.appendChild(timeStamp);  
+          
+          // algorithm = document.createElement('p');
+          // algorithm.textContent = algorithm.title; 
+          // trackerDiv.appendChild(algorithm); 
+
+          let updateTrackerBtn = document.createElement('input'); 
+          updateTrackerBtn.type = "submit";
+          updateTrackerBtn.name = "Update"; 
+          updateTrackerBtn.value = "Update";
+          algorithmDiv.appendChild(updateTrackerBtn); 
+
+          updateTrackerBtn.addEventListener('click', function(event) {
+            event.preventDefault();
+            
+            let form = document.createElement("form");
+            form.setAttribute("name", "updateTrackerForm");
+            tDiv.appendChild(form); 
         
-        let createdAt = document.createElement('p');
-        createdAt.textContent = t.createdAt;
-        tDiv.appendChild(createdAt);  
+            let updateTracker = document.createElement('input'); 
+            updateTracker.type = "text";
+            updateTracker.name = "content"; 
+            form.appendChild(updateTracker);
+          
+            let confirm = document.createElement('input'); 
+            confirm.type = "submit";
+            confirm.name = "Update"; 
+            confirm.value = "Confirm";
+            form.appendChild(confirm); 
 
-        let updatedAt = document.createElement('p');
-        updatedAt.textContent = t.updatedAt;
-        tDiv.appendChild(updatedAt); 
+            confirm.addEventListener('click', function(event) {
+              event.preventDefault();
+              
+              // document.body.trackerDiv.form.remove();
+
+              let newTracker = {
+                id : t.id,
+                content : updateTracker.value,
+                algorithm : t.algorithm 
+              }; 
+              updateTrackerForAlgorithm(newTracker, t.algorithm);
+            });
+            event.target.textContent = '';
+            event.target.parentElement.textContent = '';
+          });
+
+          let deleteTrackerBtn = document.createElement('input'); 
+          deleteTrackerBtn.type = "submit";
+          deleteTrackerBtn.name = "delete"; 
+          deleteTrackerBtn.value = "Delete";
+          algorithmDiv.appendChild(deleteTrackerBtn); 
+
+          deleteTrackerBtn.addEventListener('click', function(event) {
+            event.preventDefault();
+
+            let message = document.createElement('h3'); 
+            message.style.color = 'red'; 
+            message.textContent = 'Are you sure?'; 
+            tDiv.appendChild(message);
+
+            let confirm = document.createElement('input'); 
+            confirm.type = "submit";
+            confirm.name = "confirm"; 
+            confirm.value = "Confirm";
+            tDiv.appendChild(confirm); 
+
+            confirm.addEventListener('click', function(event) {
+              event.preventDefault();
+              deleteTracker(t);
+            });
+            // event.target.textContent = '';
+            // event.target.parentElement.textContent = '';
+          });
+        }
+      };
+      let addTrackerBtn = document.createElement('input'); 
+      addTrackerBtn.type = "submit";
+      addTrackerBtn.name = "add"; 
+      addTrackerBtn.value = "Add";
+      algorithmDiv.appendChild(addTrackerBtn);   
+      addTrackerBtn.addEventListener('click', function(event) {
+        event.preventDefault();
+        deleteTracker(t);
+      });
+    } else {
+      let trackerDiv = document.createElement('div'); 
+      trackerDiv.id = 'tDiv';
+      data[0].appendChild(trackerDiv); 
+
+      if (tracker.algorithm.id === algorithm.id) {
+        let content = document.createElement('h1'); 
+        content.textContent = tracker.content; 
+        trackerDiv.appendChild(content);
+        
+        let timeStamp = document.createElement('p');
+        timeStamp.textContent = tracker.createdAt + " " + tracker.updatedAt;
+        trackerDiv.appendChild(createdAt);  
         
         algorithm = document.createElement('p');
         algorithm.textContent = algorithm.title; 
-        tDiv.appendChild(algorithm); 
+        trackerDiv.appendChild(algorithm); 
 
         let updateTrackerBtn = document.createElement('input'); 
         updateTrackerBtn.type = "submit";
         updateTrackerBtn.name = "Update"; 
         updateTrackerBtn.value = "Update";
-        tDiv.appendChild(updateTrackerBtn); 
+        trackerDiv.appendChild(updateTrackerBtn); 
 
         updateTrackerBtn.addEventListener('click', function(event) {
           event.preventDefault();
@@ -148,20 +292,48 @@ function displayTracker(tracker, algorithm){
             // document.body.trackerDiv.form.remove();
 
             let newTracker = {
-              id : t.id,
+              id : tracker.id,
               content : updateTracker.value,
-              algorithm : t.algorithm 
+              algorithm : tracker.algorithm 
             }; 
-            updateTrackerForAlgorithm(newTracker, t.algorithm);
+            updateTrackerForAlgorithm(newTracker, tracker.algorithm);
           });
           // event.target.textContent = '';
           // event.target.parentElement.textContent = '';
         });
-      }
+
+        let deleteTrackerBtn = document.createElement('input'); 
+        deleteTrackerBtn.type = "submit";
+        deleteTrackerBtn.name = "delete"; 
+        deleteTrackerBtn.value = "Delete";
+        trackerDiv.appendChild(deleteTrackerBtn); 
+
+        deleteTrackerBtn.addEventListener('click', function(event) {
+          event.preventDefault();
+
+          let message = document.createElement('h3'); 
+          message.style.color = 'red'; 
+          message.textContent = 'Are you sure?'; 
+          tDiv.appendChild(message);
+
+          let confirm = document.createElement('input'); 
+          confirm.type = "submit";
+          confirm.name = "confirm"; 
+          confirm.value = "Confirm";
+          tDiv.appendChild(confirm); 
+
+          confirm.addEventListener('click', function(event) {
+            event.preventDefault();
+            deleteTracker(tracker);
+          });
+          // event.target.textContent = '';
+          // event.target.parentElement.textContent = '';
+        });
     }
+  }
 }
 
-// CRUD METHODS for TRACKERS 
+// // CRUD METHODS for TRACKERS 
 function createTrackerForAlgorithm(newTracker, id) {
   let userId = 1; 
 	let xhr = new XMLHttpRequest();
@@ -213,4 +385,24 @@ function getTrackers(algorithm){
 			}
 		}
 	}; xhr.send();
+}
+
+function deleteTracker(tracker) {
+  let userId = 1;
+  let tId = tracker.id;
+  let id = tracker.algorithm.id;
+  let xhr = new XMLHttpRequest();
+	xhr.open('DELETE', `api/users/${userId}/algorithms/${id}/trackers/${tId}`);
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState === 4) {
+			if (xhr.status === 200 || xhr.status === 201)  {
+        getAllAlgorithms();
+				deleteSuccessful();
+			} else {
+				console.error('Tracker for Algorithm cannot be reached ' + xhr.status);
+        console.log(tracker);
+			}
+		}
+	}; xhr.setRequestHeader('Content-type', 'application/json'); 
+  xhr.send(JSON.stringify(tracker));
 }

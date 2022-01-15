@@ -70,7 +70,9 @@ public class TrackerServiceImpl implements TrackerService {
 		Optional<Tracker> tOpt = tRepo.findById(tId);
 		if (tOpt.isPresent()) {
 			Tracker tracker = tOpt.get();
-			tRepo.delete(tracker);
+			tracker.setAlgorithm(null);
+			tracker.setUser(null);
+			tRepo.deleteById(tId);
 			deleted = true;
 			return deleted;
 		} return deleted;

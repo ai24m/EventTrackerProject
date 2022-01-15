@@ -34,6 +34,7 @@ public class Algorithm {
 	@OneToMany(mappedBy = "algorithm")
 	private List<Tracker> trackers;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user; 
