@@ -99,36 +99,37 @@ function displayTracker(tracker, algorithm){
     for (let t of tracker) {
       console.log(t.algorithm.id);
       if (t.algorithm.id === algorithm.id) {
+        let tDiv = document.createElement('div'); 
+        trackerDiv.appendChild(tDiv); 
+
         let content = document.createElement('h1'); 
         content.textContent = t.content; 
-        trackerDiv.appendChild(content);
+        tDiv.appendChild(content);
         
         let createdAt = document.createElement('p');
         createdAt.textContent = t.createdAt;
-        trackerDiv.appendChild(createdAt);  
+        tDiv.appendChild(createdAt);  
 
         let updatedAt = document.createElement('p');
         updatedAt.textContent = t.updatedAt;
-        if (updatedAt.DayOfMonth === 0) {
-          trackerDiv.appendChild(updatedAt); 
-        }
+        tDiv.appendChild(updatedAt); 
         
         algorithm = document.createElement('p');
         algorithm.textContent = algorithm.title; 
-        trackerDiv.appendChild(algorithm); 
+        tDiv.appendChild(algorithm); 
 
         let updateTrackerBtn = document.createElement('input'); 
         updateTrackerBtn.type = "submit";
         updateTrackerBtn.name = "Update"; 
         updateTrackerBtn.value = "Update";
-        trackerDiv.appendChild(updateTrackerBtn); 
+        tDiv.appendChild(updateTrackerBtn); 
 
         updateTrackerBtn.addEventListener('click', function(event) {
           event.preventDefault();
           
           let form = document.createElement("form");
           form.setAttribute("name", "updateTrackerForm");
-          trackerDiv.appendChild(form); 
+          tDiv.appendChild(form); 
       
           let updateTracker = document.createElement('input'); 
           updateTracker.type = "text";
@@ -147,10 +148,14 @@ function displayTracker(tracker, algorithm){
             // document.body.trackerDiv.form.remove();
 
             let newTracker = {
-              content: updateTracker.value, 
+              id : t.id,
+              content : updateTracker.value,
+              algorithm : t.algorithm 
             }; 
-            updateTrackerFormAlgorithm(newTracker, algorithm.id);
+            updateTrackerForAlgorithm(newTracker, t.algorithm);
           });
+          // event.target.textContent = '';
+          // event.target.parentElement.textContent = '';
         });
       }
     }
@@ -175,16 +180,18 @@ function createTrackerForAlgorithm(newTracker, id) {
 	xhr.send(JSON.stringify(newTracker));
 }
 
-function updateTrackerFormAlgorithm(newTracker, id) {
+function updateTrackerForAlgorithm(newTracker, algorithm) {
   let userId = 1;
   let tId = newTracker.id;
+  let id = newTracker.algorithm.id;
+  console.log(id);
 	let xhr = new XMLHttpRequest();
 	xhr.open('PUT', `api/users/${userId}/algorithms/${id}/trackers/${tId}`);
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState === 4) {
 			if (xhr.status === 200 || xhr.status === 201)  {
-				let newTracker = JSON.parse(xhr.responseText);
-				displayTracker(newTracker, newTracker.algorithm);
+				let tracker = JSON.parse(xhr.responseText);
+				displayTracker(tracker, newTracker.algorithm);
 			} else {
 				console.error('Tracker update failed' + xhr.status);
 			}

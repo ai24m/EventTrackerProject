@@ -82,12 +82,12 @@ public class TrackerController {
 			tracker = tSvc.updateTracker(tId, tracker, userId, id);
 			if (tracker == null) {
 				res.setStatus(404); //404 request body does not exisy
-			} 
+			} return tracker; 
 		} catch (Exception e) {
 			res.setStatus(400); //400 request body is bad data 
 			e.printStackTrace();
 			tracker = null;
-		} return tracker;
+		} return tracker; 
 	} 
 	
 	@DeleteMapping("users/{userId}/algorithms/{id}/trackers/{tId}")
