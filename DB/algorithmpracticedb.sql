@@ -44,6 +44,7 @@ CREATE TABLE IF NOT EXISTS `algorithm` (
   `description` VARCHAR(1000) NOT NULL,
   `rating` INT NULL,
   `user_id` INT NOT NULL,
+  `sample` VARCHAR(1000) NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `title_UNIQUE` (`title` ASC),
   INDEX `fk_algorithm_user1_idx` (`user_id` ASC),
@@ -157,11 +158,11 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `algorithmpracticedb`;
-INSERT INTO `algorithm` (`id`, `title`, `description`, `rating`, `user_id`) VALUES (1, 'Two Number Sum', 'Write a function that takes in a non-empty array of distinct integers and an integer representing a target sum.', 1, 1);
-INSERT INTO `algorithm` (`id`, `title`, `description`, `rating`, `user_id`) VALUES (2, 'Validate Subsequence ', 'Given two non-empty arrays of integers, write a function that determines whether the second array is a subsequence of the first one.', 2, 1);
-INSERT INTO `algorithm` (`id`, `title`, `description`, `rating`, `user_id`) VALUES (3, 'Binary Search', 'Write a function that takes in a sorted array of integers as well as a target integer. The function should use binary search to determine if the target integer is contained in the array and should return its index if it is.', 3, 1);
-INSERT INTO `algorithm` (`id`, `title`, `description`, `rating`, `user_id`) VALUES (4, 'Sorted Squared Array ', 'Write a function that takes in a non-empty array of integers that are sorted in ascending order and returns a new array of the same length with the squares of the original integers also sorted in ascending order.', 1, 1);
-INSERT INTO `algorithm` (`id`, `title`, `description`, `rating`, `user_id`) VALUES (5, 'Find Closest Value in BST', 'Write a function that takes a Binary Search Tree and a target integer value and returns the closest value to that target value contained', 3, 1);
+INSERT INTO `algorithm` (`id`, `title`, `description`, `rating`, `user_id`, `sample`) VALUES (1, 'Two Number Sum', 'Write a function that takes in a non-empty array of distinct integers and an integer representing a target sum.', 1, 1, 'array = [5, -4, 8, 11, -1] targetSum = 10 Output: [-1, 11]');
+INSERT INTO `algorithm` (`id`, `title`, `description`, `rating`, `user_id`, `sample`) VALUES (2, 'Validate Subsequence ', 'Given two non-empty arrays of integers, write a function that determines whether the second array is a subsequence of the first one.', 2, 1, 'array = [5, 1, 22, 25, 6, -1, 8, 10] sequence = [1, 6, -1, 10]  Output: true ');
+INSERT INTO `algorithm` (`id`, `title`, `description`, `rating`, `user_id`, `sample`) VALUES (3, 'Minimum Wait Time ', 'Write a funciton that returns the minimum amount of total wait time for all queries ', 3, 1, 'queries = [1, 4, 5] => [5, 1, 4]  Output: (0) + (5) + (5 + 1) = 11');
+INSERT INTO `algorithm` (`id`, `title`, `description`, `rating`, `user_id`, `sample`) VALUES (4, 'Sorted Squared Array ', 'Write a function that takes in a non-empty array of integers that are sorted in ascending order and returns a new array of the same length with the squares of the original integers also sorted in ascending order.', 1, 1, 'array = [1, 2, 3, 5, 6, 8, 9] Output: [1, 4, 9, 25, 36, 64, 81]');
+INSERT INTO `algorithm` (`id`, `title`, `description`, `rating`, `user_id`, `sample`) VALUES (5, 'Remove Duplicates From Linked List', 'Write a function that returns a modified linked list that doesn\'t contain any repeating nodes', 3, 1, 'linkedList = 1 -> 1 -> 4 -> 4 -> 6 Output: 1 -> 4 -> 6');
 
 COMMIT;
 
@@ -173,9 +174,9 @@ START TRANSACTION;
 USE `algorithmpracticedb`;
 INSERT INTO `tracker` (`id`, `content`, `created_at`, `updated_at`, `user_id`, `algorithm_id`) VALUES (1, 'pretty easy!', '2021-01-01 00:00:00 ', '2021-01-01 00:00:00 ', 1, 1);
 INSERT INTO `tracker` (`id`, `content`, `created_at`, `updated_at`, `user_id`, `algorithm_id`) VALUES (2, 'was pretty tough, forgot how to access the elements of an array', '2021-01-02 09:00:00', '2021-01-02 09:00:00', 1, 1);
-INSERT INTO `tracker` (`id`, `content`, `created_at`, `updated_at`, `user_id`, `algorithm_id`) VALUES (3, 'got this one pretty quick, maybe tackle another solution ', '2021-01-02 09:00:00', '2021-01-02 09:00:00', 2, 2);
-INSERT INTO `tracker` (`id`, `content`, `created_at`, `updated_at`, `user_id`, `algorithm_id`) VALUES (4, 'i didn\'t even know what binary search was lol', '2021-01-03 09:00:00', '2021-01-03 10:00:00', 2, 3);
-INSERT INTO `tracker` (`id`, `content`, `created_at`, `updated_at`, `user_id`, `algorithm_id`) VALUES (5, 'in progress', '2021-01-03 10:30:00', '2021-01-03 10:30:00', 2, 4);
+INSERT INTO `tracker` (`id`, `content`, `created_at`, `updated_at`, `user_id`, `algorithm_id`) VALUES (3, 'got this one pretty quick, maybe tackle another solution ', '2021-01-02 09:00:00', '2021-01-02 09:00:00', 1, 2);
+INSERT INTO `tracker` (`id`, `content`, `created_at`, `updated_at`, `user_id`, `algorithm_id`) VALUES (4, 'i didn\'t even know what binary search was lol', '2021-01-03 09:00:00', '2021-01-03 10:00:00', 1, 3);
+INSERT INTO `tracker` (`id`, `content`, `created_at`, `updated_at`, `user_id`, `algorithm_id`) VALUES (5, 'in progress', '2021-01-03 10:30:00', '2021-01-03 10:30:00', 1, 4);
 
 COMMIT;
 

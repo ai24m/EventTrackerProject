@@ -59,14 +59,28 @@ input[type=text] {
 
 input[type=submit] {
     padding:5px 15px; 
-    margin-right: 3%;
+    margin-right: 5%;
     background:#ccc; 
-    border:0 none;
+    border:1px black;
     cursor:pointer;
     -webkit-border-radius: 5px;
     border-radius: 5px; 
 }
 
+#algorithm p {
+    padding:5px 15px; 
+    background-color: lightgrey;  
+    border: 1px solid #5A5A80;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+#algorithm ul {
+    list-style-type: none;
+    padding: 0%;
+}
+#algorithm ul > li:first-child{
+    font-size: 150%;
+}
 /************************/
 /*     Page Content     */
 /************************/

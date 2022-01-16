@@ -29,9 +29,11 @@ function getAllAlgorithms() {
 
 function displayAllAlgorithms(allAlgorithms) {
   let algorithmDiv = document.getElementById('algorithm');
-  let ul = document.createElement('ul');
 
   allAlgorithms.forEach(function (a){
+    let p = document.createElement('p'); 
+    let ul = document.createElement('ul');
+
     let title = document.createElement('li');
     title.textContent = a.title + ' ▶ Difficulty: ' + a.rating;
     ul.appendChild(title);
@@ -39,15 +41,22 @@ function displayAllAlgorithms(allAlgorithms) {
     let description = document.createElement('li');
     description.textContent = a.description;
     ul.appendChild(description);
+    p.appendChild(ul);
 
-    let links = document.createElement('li');
-    ul.appendChild(links);
+    // codeformat.textContent = a.title + ' ▶ Difficulty: ' + a.rating;
+    let codeFormat = document.createElement('pre');
+    // codeFormat.textContent = "array = [5, -4, 8, 11, -1]\ntargetSum = 10\nSample Output = [-1, 11]";
+    codeFormat.textContent = a.sample;
+    p.appendChild(codeFormat);
+    
+    // let links = document.createElement('li');
+    // ul.appendChild(links);
 
     let solutionBtn = document.createElement('input'); 
     solutionBtn.type = 'submit'; 
     solutionBtn.name = 'button';
     solutionBtn.value = 'solutions';
-    links.appendChild(solutionBtn);
+    p.appendChild(solutionBtn);
     solutionBtn.addEventListener('click', function(event) {
       event.preventDefault();
       window.location.href = "#solutions";
@@ -57,14 +66,18 @@ function displayAllAlgorithms(allAlgorithms) {
     trackerBtn.type = 'submit'; 
     trackerBtn.name = 'button';
     trackerBtn.value = 'tracker';
-    links.appendChild(trackerBtn);
+    p.appendChild(trackerBtn);
     trackerBtn.addEventListener('click', function(event) {
       event.preventDefault();
       window.location.href = "#trackers";
       getTrackers(a);
     });
+    // p.appendChild(codeFormat);
+
+    algorithmDiv.appendChild(p);
+    // algorithmDiv.appendChild(codeFormat);
+
   }); 
-  algorithmDiv.appendChild(ul);
 }
 // SOLUTIONS
 function getSolutionsForAlgorithm(id) {

@@ -26,6 +26,8 @@ public class Algorithm {
 	
 	private int rating;
 	
+	private String sample;
+	
 	@JsonIgnore
 	@OneToMany(mappedBy = "algorithm")
 	private List<Solution> solutions;
@@ -42,16 +44,17 @@ public class Algorithm {
 //	constructors 
 	public Algorithm() {} 
 
-	public Algorithm(int id, String title, String description, int rating, List<Solution> solutions,
-			List<Tracker> trackers, User user) {
-		super();
-		this.id = id;
-		this.title = title;
-		this.description = description;
-		this.rating = rating;
-		this.solutions = solutions;
-		this.trackers = trackers;
-		this.user = user;
+	public Algorithm(int id, String title, String description, int rating, String sample, List<Solution> solutions,
+		List<Tracker> trackers, User user) {
+	super();
+	this.id = id;
+	this.title = title;
+	this.description = description;
+	this.rating = rating;
+	this.sample = sample;
+	this.solutions = solutions;
+	this.trackers = trackers;
+	this.user = user;
 	}
 
 	//  getters and setters 
@@ -87,6 +90,14 @@ public class Algorithm {
 		this.rating = rating;
 	}
 
+	public String getSample() {
+		return sample;
+	}
+
+	public void setSample(String sample) {
+		this.sample = sample;
+	}
+
 	public List<Solution> getSolutions() {
 		return solutions;
 	}
@@ -97,6 +108,10 @@ public class Algorithm {
 	
 	public List<Tracker> getTrackers() {
 		return trackers;
+	}
+	
+	public void setTrackers(List<Tracker> trackers) {
+		this.trackers = trackers;
 	}
 
 	public void setComments(List<Tracker> trackers) {
