@@ -80,8 +80,9 @@ public class TrackerServiceImpl implements TrackerService {
 
 	@Override
 	public List<Tracker> findTrackersByAlgorithmId(Integer id) {
-		Algorithm algorithm = tRepo.findByAlgorithm_Id(id);
-		if (algorithm != null) {
+		 Optional<Algorithm> aOpt = aRepo.findById(id);
+		if (aOpt.isPresent()) {
+			 Algorithm algorithm = aOpt.get();
 			List <Tracker> trackers = algorithm.getTrackers();
 			return trackers;
 		} return null;

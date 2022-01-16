@@ -22,7 +22,7 @@ public class Solution {
 	
 	private String description;
 	
-	@JsonIgnore
+//	@JsonIgnore
 	@ManyToOne 
 	@JoinColumn(name="algorithm_id")
 	private Algorithm algorithm; 
