@@ -172,11 +172,15 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `algorithmpracticedb`;
-INSERT INTO `tracker` (`id`, `content`, `created_at`, `updated_at`, `user_id`, `algorithm_id`) VALUES (1, 'pretty easy!', '2021-01-01 09:00:00 ', '2021-01-01 00:00:00 ', 1, 1);
-INSERT INTO `tracker` (`id`, `content`, `created_at`, `updated_at`, `user_id`, `algorithm_id`) VALUES (2, 'was pretty tough, forgot how to access the elements of an array', '2021-01-02 09:00:00', '2021-01-02 09:00:00', 1, 1);
-INSERT INTO `tracker` (`id`, `content`, `created_at`, `updated_at`, `user_id`, `algorithm_id`) VALUES (3, 'got this one pretty quick, maybe tackle another solution ', '2021-01-02 09:00:00', '2021-01-02 09:00:00', 1, 2);
-INSERT INTO `tracker` (`id`, `content`, `created_at`, `updated_at`, `user_id`, `algorithm_id`) VALUES (4, 'i didn\'t even know what binary search was lol', '2021-01-03 09:00:00', '2021-01-03 10:00:00', 1, 3);
-INSERT INTO `tracker` (`id`, `content`, `created_at`, `updated_at`, `user_id`, `algorithm_id`) VALUES (5, 'in progress', '2021-01-03 10:30:00', '2021-01-03 10:30:00', 1, 4);
+INSERT INTO `tracker` (`id`, `content`, `created_at`, `updated_at`, `user_id`, `algorithm_id`) VALUES (1, 'pretty easy! strategized using  for loops to access array', '2021-01-01 09:00:00 ', '2021-01-01 00:00:00 ', 1, 1);
+INSERT INTO `tracker` (`id`, `content`, `created_at`, `updated_at`, `user_id`, `algorithm_id`) VALUES (2, 'maybe try another solution using hash maps for faster approach', '2021-01-02 09:00:00', '2021-01-02 09:00:00', 1, 1);
+INSERT INTO `tracker` (`id`, `content`, `created_at`, `updated_at`, `user_id`, `algorithm_id`) VALUES (3, 'note to self to implement a variable to store position in subsequence', '2021-01-02 09:00:00', '2021-01-02 09:00:00', 1, 2);
+INSERT INTO `tracker` (`id`, `content`, `created_at`, `updated_at`, `user_id`, `algorithm_id`) VALUES (4, 'maybe review while loops and comparing array indexes to another', '2021-01-03 10:00:00', '2021-01-03 10:00:00', 1, 2);
+INSERT INTO `tracker` (`id`, `content`, `created_at`, `updated_at`, `user_id`, `algorithm_id`) VALUES (5, 'in progress', '2021-01-05 10:30:00', '2021-01-03 10:30:00', 1, 3);
+INSERT INTO `tracker` (`id`, `content`, `created_at`, `updated_at`, `user_id`, `algorithm_id`) VALUES (6, 'write down what the question is asking. the formula is in the sample output', '2021-01-05 11:45:00', '2021-01-03 10:00:00', 1, 3);
+INSERT INTO `tracker` (`id`, `content`, `created_at`, `updated_at`, `user_id`, `algorithm_id`) VALUES (7, 'go back and look at methods that the array can call ', '2021-01-06 11:00:00', '2021-01-07 10:00:00', 1, 4);
+INSERT INTO `tracker` (`id`, `content`, `created_at`, `updated_at`, `user_id`, `algorithm_id`) VALUES (8, 'another technique: dont have to sort', '2021-01-06 11:33:00', '2021-01-07 10:00:00', 1, 4);
+INSERT INTO `tracker` (`id`, `content`, `created_at`, `updated_at`, `user_id`, `algorithm_id`) VALUES (9, 'tried brute force and used the hash map ', '2021-01-09 12:00:00', '2021-01-09 10:00:00', 1, 5);
 
 COMMIT;
 
@@ -200,21 +204,26 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `algorithmpracticedb`;
-INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (1, 'images/a1sgo1.PNG', 1, 'Go sample solution 1 ', 3, 1);
-INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (2, 'https://github.com/ai24m/EventTrackerProject/blob/main/images/a1sgo2.PNG', 1, 'I found another solution that should work with GO', 3, 3);
-INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (3, 'https://github.com/ai24m/EventTrackerProject/blob/main/images/a1sjava1.PNG', 1, 'Java sample solution 1 to question 1 ', 1, 1);
-INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (4, 'https://github.com/ai24m/EventTrackerProject/blob/main/images/a1sjava2.PNG', 1, 'Another possible way to solve...', 1, 3);
-INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (5, 'https://github.com/ai24m/EventTrackerProject/blob/main/images/a2go2.PNG', 2, 'Go sample solution to question 2', 3, 1);
-INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (6, 'https://github.com/ai24m/EventTrackerProject/blob/main/images/a2java1.PNG', 2, 'Java sample solution to question 2 ', 1, 1);
-INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (7, 'https://github.com/ai24m/EventTrackerProject/blob/main/images/a2javascript1.PNG', 3, 'JavaScript sample solution to question 3 ', 2, 1);
-INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (8, 'https://github.com/ai24m/EventTrackerProject/blob/main/images/a3java2.PNG', 3, 'Java sample solution to question 3 ', 1, 1);
-INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (9, 'https://github.com/ai24m/EventTrackerProject/blob/main/images/al4s1java.png', 4, 'Java sample solution to question 4 ', 1, 1);
-INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (10, 'https://github.com/ai24m/EventTrackerProject/blob/main/images/al4s1javascript.png', 4, 'JavaScript sample solution to question 4', 2, 1);
-INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (11, 'https://github.com/ai24m/EventTrackerProject/blob/main/images/al4s1python.png', 4, 'Python sample solution to question 4', 4, 1);
-INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (12, 'https://github.com/ai24m/EventTrackerProject/blob/main/images/al4s2python.png', 4, 'Here\'s another solution to this question', 4, 2);
-INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (13, 'https://github.com/ai24m/EventTrackerProject/blob/main/images/al5s1java.png', 5, 'Java sample solution to question 5', 1, 1);
-INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (14, 'https://github.com/ai24m/EventTrackerProject/blob/main/images/al5s1javascript.png', 5, 'JavaScript sample solution to question 5', 2, 1);
-INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (15, 'https://github.com/ai24m/EventTrackerProject/blob/main/images/al5s1python.png', 5, 'Python sample solution to question 5', 4, 1);
+INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (1, 'images/a1sgo1.PNG', 1, 'Go sample solution ', 3, 1);
+INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (2, 'images/a1sjava1.PNG', 1, 'I found another solution that should work with GO', 1, 1);
+INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (3, 'images/a1sjava2.PNG', 1, 'Java sample solution 1 to question 1 ', 1, 1);
+INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (4, 'images/a1sjavascript1.PNG', 1, 'Another possible way to solve...', 2, 1);
+INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (5, 'images/a1sjavascript2.PNG', 1, 'Another JavaScript solution', 2, 1);
+INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (6, 'images/a2go1.PNG', 2, 'Go solution to 2 ', 3, 1);
+INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (7, 'images/a2java1.PNG', 2, 'Java sample solution', 1, 1);
+INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (8, 'images/a2javascript1.PNG', 2, 'JavaScript sample solution', 2, 1);
+INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (9, 'images/a2go2.PNG', 2, 'go sample solution ', 3, 1);
+INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (10, 'images/a2javascript2.PNG', 2, 'JavaScript sample solution to question 4', 2, 1);
+INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (11, 'images/a2typescript1.PNG', 2, 'typescript sample solution', 5, 1);
+INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (12, 'images/a3sjavascript1.png', 3, 'javascript sample solution', 2, 1);
+INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (13, 'images/a3sjava1.PNG', 3, 'Java sample solution to question 3', 1, 1);
+INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (14, 'images/a3spython1.png', 3, 'python sample solution', 4, 1);
+INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (15, 'images/a4stypescript.png', 4, 'typescript sample solution', 5, 1);
+INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (16, 'images/a4sjava1.png', 4, 'java sample solution', 1, 1);
+INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (17, 'images/a4sjavascript1.png', 4, 'javascript sample solution', 2, 1);
+INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (18, 'images/a5spython.png', 5, 'python sample solution', 4, 1);
+INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (19, 'images/a5sjavascript.png', 5, 'javascript sample solution', 2, 1);
+INSERT INTO `solution` (`id`, `image_url`, `algorithm_id`, `description`, `language_id`, `user_id`) VALUES (20, 'images/a5sjava1.png', 5, 'java sample solution', 1, 1);
 
 COMMIT;
 

@@ -15,6 +15,7 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity 
@@ -28,10 +29,13 @@ public class Tracker {
 	
 	@Column(name="created_at")
 	@CreationTimestamp
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm")
 	private LocalDateTime createdAt; 
+	
 	
 	@Column(name="updated_at")
 	@UpdateTimestamp
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm")
 	private LocalDateTime updatedAt;
 	
 //	@JsonIgnore
