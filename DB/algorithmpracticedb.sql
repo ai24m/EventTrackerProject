@@ -64,8 +64,8 @@ DROP TABLE IF EXISTS `tracker` ;
 CREATE TABLE IF NOT EXISTS `tracker` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `content` VARCHAR(1000) NOT NULL,
-  `created_at` TIMESTAMP NOT NULL,
-  `updated_at` DATETIME NULL,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP NULL,
   `user_id` INT NOT NULL,
   `algorithm_id` INT NOT NULL,
   PRIMARY KEY (`id`),
@@ -172,7 +172,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `algorithmpracticedb`;
-INSERT INTO `tracker` (`id`, `content`, `created_at`, `updated_at`, `user_id`, `algorithm_id`) VALUES (1, 'pretty easy!', '2021-01-01 00:00:00 ', '2021-01-01 00:00:00 ', 1, 1);
+INSERT INTO `tracker` (`id`, `content`, `created_at`, `updated_at`, `user_id`, `algorithm_id`) VALUES (1, 'pretty easy!', '2021-01-01 09:00:00 ', '2021-01-01 00:00:00 ', 1, 1);
 INSERT INTO `tracker` (`id`, `content`, `created_at`, `updated_at`, `user_id`, `algorithm_id`) VALUES (2, 'was pretty tough, forgot how to access the elements of an array', '2021-01-02 09:00:00', '2021-01-02 09:00:00', 1, 1);
 INSERT INTO `tracker` (`id`, `content`, `created_at`, `updated_at`, `user_id`, `algorithm_id`) VALUES (3, 'got this one pretty quick, maybe tackle another solution ', '2021-01-02 09:00:00', '2021-01-02 09:00:00', 1, 2);
 INSERT INTO `tracker` (`id`, `content`, `created_at`, `updated_at`, `user_id`, `algorithm_id`) VALUES (4, 'i didn\'t even know what binary search was lol', '2021-01-03 09:00:00', '2021-01-03 10:00:00', 1, 3);

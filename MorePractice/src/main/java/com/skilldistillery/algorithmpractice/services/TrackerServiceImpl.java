@@ -59,6 +59,7 @@ public class TrackerServiceImpl implements TrackerService {
 			User user = uOpt.get();
 			tracker.setAlgorithm(algorithm);
 			tracker.setUser(user);
+			tracker.setUpdatedAt(tracker.getCreatedAt());
 			tRepo.saveAndFlush(tracker);
 			return tracker;
 		} return null;

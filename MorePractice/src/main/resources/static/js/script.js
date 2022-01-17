@@ -11,7 +11,7 @@ function displayError(message) {
   let body = document.body;
   body.textContent = message;
 }
-
+// ALGORITHMS
 function getAllAlgorithms() {
 	let xhr = new XMLHttpRequest();
 	xhr.open('GET', 'api/algorithms/');
@@ -114,87 +114,91 @@ function displaySolutions(solutions){
 	let ul = document.createElement('ul');
 	solutionDiv.appendChild(ul);
 
-	 for (let s of solutions) {
-		let image = document.createElement('li');
-		ul.appendChild(image);
-		let img = document.createElement('img');
-		img.src = s.imageUrl;
-		image.appendChild(img);
+  for (let s of solutions) {
+  let image = document.createElement('li');
+    ul.appendChild(image);
+    let img = document.createElement('img');
+    img.src = s.imageUrl;
+    image.appendChild(img);
 
-		let description = document.createElement('li');
-	    description.textContent = s.description;
-	    ul.appendChild(description);
+    let description = document.createElement('li');
+    description.textContent = s.description;
+    ul.appendChild(description);
 
-	    let language = document.createElement('li');
-	    language.textContent = s.language.title;
-	    ul.appendChild(language);
+    let language = document.createElement('li');
+    language.textContent = s.language.title;
+    ul.appendChild(language);
 
-	    let user = document.createElement('li');
-	    user.textContent = s.user.username;
-	    ul.appendChild(user);
-    };
+    let user = document.createElement('li');
+    user.textContent = s.user.username;
+    ul.appendChild(user);
+  };
 }
 //  TRACKERS 
-function getTrackers(algorithm){
-  console.log(algorithm);
-  let id = algorithm.id;
-  console.log(id);
-  let xhr = new XMLHttpRequest();
-	xhr.open('GET', `/api/find/algorithms/${id}/trackers/`);
-	xhr.onreadystatechange = function() {
-		if (xhr.readyState === 4) {
-			if (xhr.status === 200 || xhr.status === 201)  {
-				let trackers = JSON.parse(xhr.responseText);
-        console.log(trackers);
-        displayTracker(trackers, algorithm);
-			} else {
-				console.error('Trackers for Algorithm cannot be reached ' + xhr.status);
-			}
-		}
-	}; xhr.send();
-}
-
 function displayTracker(trackers, algorithm){
   let trackerDivMain = document.getElementById('trackers');
+  trackerDivMain.textContent = '';
 
-  let trackerDiv = document.createElement('div');
-  trackerDiv.textContent = '';
-  trackerDivMain.appendChild(trackerDiv);
+  let trackerAlgorithmDiv = document.createElement('div');
+  trackerAlgorithmDiv.textContent = '';
+  trackerAlgorithmDiv.style.cssText = "padding:0 5% 3% 3%; background-color: #C7B6DC;  -webkit-border-radius: 5px;border-radius: 5px; overflow: hidden";
+  trackerDivMain.appendChild(trackerAlgorithmDiv);
   
   let title = document.createElement('h3');
-  title.textContent = 'For Algorithm: ' + algorithm.title;
-  trackerDiv.appendChild(title);
+  title.textContent = algorithm.title + ' ▶ Difficulty: ' + algorithm.rating;
+  trackerAlgorithmDiv.appendChild(title);
+
+  let description = document.createElement('h4');
+  description.textContent = algorithm.description;
+  trackerAlgorithmDiv.appendChild(description);
+
+  let codeFormat = document.createElement('pre');
+  codeFormat.textContent = algorithm.sample;
+  trackerAlgorithmDiv.appendChild(codeFormat);
 
   let addTrackerBtn = document.createElement('input');
   addTrackerBtn.type = "submit";
   addTrackerBtn.id = "add";
-  addTrackerBtn.value = "Add";
-  trackerDiv.appendChild(addTrackerBtn);
+  addTrackerBtn.value = "Add Tracker";
+  addTrackerBtn.style.cssText = "float: right; border: 3px #C7B6DC";
+  trackerAlgorithmDiv.appendChild(addTrackerBtn);
 
   addTrackerBtn.addEventListener('click', function(event) {
     event.preventDefault();
     displayAddTrackerForm(algorithm);
     trackerDiv.textContent = '';
   });
+  let trackerDiv = document.createElement('div');
+  trackerDiv.textContent = '';
+  trackerDiv.style.cssText = 'margin-top: 5%; padding:0 5% 3% 3%; background-color: white; border-radius: 5px;';
+  trackerDivMain.appendChild(trackerDiv);
 
   let ul = document.createElement('ul');
+  ul.style.cssText = 'list-style-type: none;';
   trackerDiv.appendChild(ul);
 
   trackers.forEach(function (t){
-    let content = document.createElement('li');
-    content.textContent = 'Comments: ' + t.content;
-    ul.appendChild(content);
+    let stylingDiv = document.createElement('div');
+    stylingDiv.style.cssText = "border: 3px solid #C7B6DC; margin: 5%; padding:0 5% 3% 3%; background-color: white; border-radius: 5px; overflow: hidden";
+    ul.appendChild(stylingDiv);
 
     // note: format timestamp to make look more readable! 
     let createdAt = document.createElement('li');
     createdAt.textContent = 'Posted: ' + t.createdAt;
-    ul.appendChild(createdAt);
+    createdAt.style.cssText = 'float: right';
+    stylingDiv.appendChild(createdAt);
 
+    let content = document.createElement('li');
+    content.textContent = t.content;
+    content.style.cssText = 'margin: 10%';
+    stylingDiv.appendChild(content);
+    
     let updateTrackerBtn = document.createElement('input');
     updateTrackerBtn.type = "submit";
     updateTrackerBtn.id = "update";
     updateTrackerBtn.value = "Update";
-    ul.appendChild(updateTrackerBtn);
+    updateTrackerBtn.style.cssText = "border: 3px solid #C7B6DC";
+    stylingDiv.appendChild(updateTrackerBtn);
 
     updateTrackerBtn.addEventListener('click', function(event) {
       event.preventDefault();
@@ -206,7 +210,8 @@ function displayTracker(trackers, algorithm){
     deleteTrackerBtn.type = "submit";
     deleteTrackerBtn.name = "delete";
     deleteTrackerBtn.value = "Delete";
-    ul.appendChild(deleteTrackerBtn);
+    deleteTrackerBtn.style.cssText = "border: 3px solid #C7B6DC";
+    stylingDiv.appendChild(deleteTrackerBtn);
 
     deleteTrackerBtn.addEventListener('click', function(event) {
       event.preventDefault();
@@ -344,6 +349,25 @@ function displayDeleteTrackerForm(tracker, algorithm){
 }
 
 // // CRUD METHODS for TRACKERS
+function getTrackers(algorithm){
+  console.log(algorithm);
+  let id = algorithm.id;
+  console.log(id);
+  let xhr = new XMLHttpRequest();
+	xhr.open('GET', `/api/find/algorithms/${id}/trackers/`);
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState === 4) {
+			if (xhr.status === 200 || xhr.status === 201)  {
+				let trackers = JSON.parse(xhr.responseText);
+        console.log(trackers);
+        displayTracker(trackers, algorithm);
+			} else {
+				console.error('Trackers for Algorithm cannot be reached ' + xhr.status);
+			}
+		}
+	}; xhr.send();
+}
+
 function createTrackerForAlgorithm(newTracker, algorithm) {
   let userId = 1;
   let id = newTracker.algorithm.id;
