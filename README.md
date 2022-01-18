@@ -7,8 +7,7 @@ The end goal of the EventTrackerProject was to become more comfortable creating 
 
 First Demo without Angular: 
 
-https://user-images.githubusercontent.com/89150394/150012560-392dd087-9929-48ee-8003-f33c33474325.mov
-
+https://user-images.githubusercontent.com/89150394/150013731-992e04fd-ff9d-4c01-b1d0-d0022ee4c146.mov
 
 
 
