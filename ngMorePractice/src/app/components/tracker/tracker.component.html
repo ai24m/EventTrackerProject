@@ -8,22 +8,29 @@
           <li>{{selected.title}} &#9658; Difficulty: {{selected.rating}}</li>
           <li>{{selected.description}}</li>
           <pre>{{selected.sample}}</pre></ul>
-      <ul *ngFor="let track of trackers">
+          <!-- end algorithm + trackers list  -->
+      <div *ngFor="let track of trackers">
+        <ul>
           <li>{{track.content}}</li>
           <li>{{track.createdAt}}</li>
-          <input type="submit" name="button" value="Edit" (click)="updateTracker(track, selected.id, track.id)">
-          <input type="submit" name="button" value="Delete" (click)="deleteTracker(selected.id, track.id)"></ul></div></div>
+          <input type="submit" name="button" value="Edit" (click)="editTracker = !editTracker">
+         <!-- trackers edit + delete -->
+          <div *ngIf='editTracker'>
+            <form class='editform'>
+              <span style="font-size: 130%;">Content:</span><input type="textarea" name="content" [(ngModel)]="track.content" placeholder="track.content">
+              <button (click)='updateTracker(track, selected.id, track.id)'>Save</button><br><br>
+              <button (click)='selected = null'>Cancel</button>
+            </form>
+          </div>
+          <input type="submit" name="button" value="Delete" (click)="deleteTracker(selected.id, track.id)"></ul></div></div></div>
+          <!-- end trackers edit + delete -->
 
           <!-- <a [routerLink]="['/algorithms/trackers/', 'algo.id']">Trackers</a> -->
           <!-- <a [routerLink]="['/algorithms/solutions/', 'algo.id']">Solutions</a> -->
 
-<!-- end of algorithm list  -->
-<!-- displayAlgorithm -->
-    <div *ngIf='selected' class='algorithmDisplay'>
-      <!-- <label for="algorithmId"><span>Id {{selected.id}}</span></label> -->
-        <ul>
-          <!-- <li>{{selected.title}} &#9658; Difficulty: {{selected.rating}}</li>
-          <li>{{selected.description}}</li>
-          <pre>{{selected.sample}}</pre> -->
-          <input type="submit" name="button" value="Return" (click)="selected=null"></ul></div>
-<!-- end of displayAlgorithm -->
+
+
+
+
+
+

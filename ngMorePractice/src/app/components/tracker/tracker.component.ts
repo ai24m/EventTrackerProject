@@ -16,6 +16,7 @@ export class TrackerComponent implements OnInit {
   tracker: Tracker = new Tracker();
   algorithms: Algorithm[] = [];
   selected: Algorithm | null = null;
+  editTracker = false;
 
   constructor(private trackerService: TrackerService,
     private algoService: AlgorithmService,

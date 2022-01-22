@@ -11,6 +11,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { TrackerComponent } from './components/tracker/tracker.component';
 import { DatePipe } from '@angular/common';
 import { TrackerService } from './services/tracker.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { TrackerService } from './services/tracker.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [
     AlgorithmService,
