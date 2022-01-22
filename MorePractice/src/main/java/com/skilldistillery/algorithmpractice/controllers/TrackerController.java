@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,6 +26,10 @@ import com.skilldistillery.algorithmpractice.services.UserService;
 
 @RestController 
 @RequestMapping("api")
+//@CrossOrigin({"*", "http://localhost:4202"})
+@CrossOrigin({"*", "http://localhost:57448"})
+
+
 public class TrackerController {
 
 	@Autowired 
@@ -57,8 +62,8 @@ public class TrackerController {
 //		List<Tracker> trackers = tSvc.findTrackersByAlgorithmId(id);
 //		return trackers; 
 //	}
-//	
-	@GetMapping("/find/algorithms/{id}/trackers/")
+	
+	@GetMapping("/algorithms/{id}/trackers")
 	public List<Tracker> getAllTrackers(@PathVariable Integer id) {
 		List<Tracker> trackers = tSvc.findAllTrackers();
 		List<Tracker> trackersWithAlgorithmId = new ArrayList<>();
@@ -66,7 +71,8 @@ public class TrackerController {
 			if (t.getAlgorithm().getId() == id) {
 				trackersWithAlgorithmId.add(t);
 			} 
-		} return trackersWithAlgorithmId;
+		} System.out.println(trackersWithAlgorithmId);
+		return trackersWithAlgorithmId;
 	}
 	
 	@PostMapping("users/{userId}/algorithms/{id}/trackers")

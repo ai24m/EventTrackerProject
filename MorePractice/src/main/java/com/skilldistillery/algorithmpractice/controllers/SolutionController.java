@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +24,9 @@ import com.skilldistillery.algorithmpractice.services.SolutionService;
 
 @RestController 
 @RequestMapping("api")
+//@CrossOrigin({"*", "http://localhost:4202"})
+@CrossOrigin({"*", "http://localhost:57448"})
+
 public class SolutionController {
 	
 	@Autowired 
@@ -49,10 +53,18 @@ public class SolutionController {
 		} return null;
 	}
 	
-	@GetMapping("algorithms/{id}/solutions/search/language/{lId}")
-	public List<Solution> getSolutionByLanguage(@PathVariable Integer lId, 
+//	@GetMapping("algorithms/{id}/solutions/search/language/{lId}")
+//	public List<Solution> getSolutionByLanguage(@PathVariable Integer lId, 
+//			HttpServletResponse res) {
+//		List<Solution> posts = sSvc.getSolutionByLanguage(lId); 
+//		if (posts == null) {
+//			res.setStatus(404);
+//		} return posts;
+//	}
+	@GetMapping("algorithms/{id}/solutions/search/language/{keyword}")
+	public List<Solution> getSolutionByLanguage(@PathVariable String keyword, 
 			HttpServletResponse res) {
-		List<Solution> posts = sSvc.getSolutionByLanguage(lId); 
+		List<Solution> posts = sSvc.getSolutionByLanguage(keyword); 
 		if (posts == null) {
 			res.setStatus(404);
 		} return posts;

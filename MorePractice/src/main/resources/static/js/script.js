@@ -35,7 +35,7 @@ function displayAllAlgorithms(allAlgorithms) {
     let ul = document.createElement('ul');
 
     let title = document.createElement('li');
-    title.textContent = a.title + ' ▶ Difficulty: ' + a.rating;
+    title.textContent = a.title + ' \u25BA Difficulty: ' + a.rating;
     ul.appendChild(title);
 
     let description = document.createElement('li');
@@ -43,14 +43,10 @@ function displayAllAlgorithms(allAlgorithms) {
     ul.appendChild(description);
     p.appendChild(ul);
 
-    // codeformat.textContent = a.title + ' ▶ Difficulty: ' + a.rating;
     let codeFormat = document.createElement('pre');
-    // codeFormat.textContent = "array = [5, -4, 8, 11, -1]\ntargetSum = 10\nSample Output = [-1, 11]";
     codeFormat.textContent = a.sample;
     p.appendChild(codeFormat);
-    
-    // let links = document.createElement('li');
-    // ul.appendChild(links);
+ 
 
     let solutionBtn = document.createElement('input'); 
     solutionBtn.type = 'submit'; 
@@ -149,7 +145,7 @@ function displayTracker(trackers, algorithm){
   trackerDivMain.appendChild(trackerAlgorithmDiv);
   
   let title = document.createElement('h3');
-  title.textContent = algorithm.title + ' ▶ Difficulty: ' + algorithm.rating;
+  title.textContent = algorithm.title + ' \u25B8 Difficulty: ' + algorithm.rating;
   trackerAlgorithmDiv.appendChild(title);
 
   let description = document.createElement('h4');
@@ -271,6 +267,7 @@ function displayAddTrackerForm(algorithm){
   form.appendChild(confirmDiv);
 
   back.addEventListener('click', function(event) {
+	event.preventDefault();
     getTrackers(algorithm);
   });
 }
@@ -371,7 +368,7 @@ function getTrackers(algorithm){
   let id = algorithm.id;
   console.log(id);
   let xhr = new XMLHttpRequest();
-	xhr.open('GET', `/api/find/algorithms/${id}/trackers/`);
+	xhr.open('GET', `/api/algorithms/${id}/trackers/`);
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState === 4) {
 			if (xhr.status === 200 || xhr.status === 201)  {
@@ -444,4 +441,3 @@ function deleteTracker(tracker, algorithm) {
 	}; xhr.setRequestHeader('Content-type', 'application/json');
   xhr.send(JSON.stringify(tracker));
 }
-

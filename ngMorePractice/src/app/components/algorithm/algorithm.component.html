@@ -1,0 +1,24 @@
+<div class="col-lg-12"><hr></div> <!-- gray separator line -->
+  <div *ngIf='!selected' id="algorithmsAll" class="col-lg-12">
+    <h1>ALGORITHM </h1>
+    <h3>Sample Questions</h3>
+    Check these questions out and track your progress on how you do:
+    <div id="algorithmDiv">
+      <ul *ngFor="let algo of algorithms">
+        console.log(algo);
+          <li (click) = 'displayAlgorithm(algo)' style="cursor: context-menu;">{{algo.title}} &#9658; Difficulty: {{algo.rating}}</li>
+          <li>{{algo.description}}</li>
+          <pre>{{algo.sample}}</pre>
+          <!-- <a [routerLink]="['/algorithms/trackers/', 'algo.id']">Trackers</a> -->
+          <!-- <a [routerLink]="['/algorithms/solutions/', 'algo.id']">Solutions</a> -->
+        </ul></div></div>
+<!-- end of algorithm list  -->
+<!-- displayAlgorithm -->
+    <div *ngIf='selected' class='algorithmDisplay'>
+      <!-- <label for="algorithmId"><span>Id {{selected.id}}</span></label> -->
+        <ul>
+          <!-- <li>{{selected.title}} &#9658; Difficulty: {{selected.rating}}</li>
+          <li>{{selected.description}}</li>
+          <pre>{{selected.sample}}</pre> -->
+          <input type="submit" name="button" value="Return" (click)="selected=null"></ul></div>
+<!-- end of displayAlgorithm -->

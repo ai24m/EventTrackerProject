@@ -14,6 +14,8 @@ public interface SolutionService {
 
 	boolean deleteSolutionById(Integer sId);
 
-	List<Solution> getSolutionByLanguage(Integer lId);
+//	List<Solution> getSolutionByLanguage(Integer lId);
+
+	List<Solution> getSolutionByLanguage(String keyword);
 
 }

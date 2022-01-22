@@ -15,6 +15,9 @@ import com.skilldistillery.algorithmpractice.services.UserService;
 
 @RestController 
 @RequestMapping("api")
+@CrossOrigin({"*", "http://localhost:4202"})
+//@CrossOrigin({"*", "http://localhost:57448"})
+
 public class AlgorithmController {
 
 	@Autowired 
@@ -28,7 +31,7 @@ public class AlgorithmController {
 		return aSvc.getAllAlgorithms();
 	}
 	
-	@GetMapping({"users/{userId}/algorithms/{id}", "algorithms/find/{id}"})
+	@GetMapping("algorithms/find/{id}")
 	public Algorithm findAlgorithmById(@PathVariable Integer id, @PathVariable Algorithm a,
 			HttpServletResponse res) {
 		Algorithm algorithm = aSvc.findAlgorithmById(id);
@@ -54,7 +57,7 @@ public class AlgorithmController {
 			Algorithm newAlgorithm = aSvc.createNewAlgorithm(algorithm);
 			if (newAlgorithm == null) {
 				res.setStatus(404);
-			} else {
+		} else {
 				res.setStatus(201);
 				StringBuffer url = req.getRequestURL();
 				url.append("/").append(algorithm.getId());

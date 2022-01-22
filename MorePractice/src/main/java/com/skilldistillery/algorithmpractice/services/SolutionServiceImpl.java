@@ -68,13 +68,24 @@ public class SolutionServiceImpl implements SolutionService {
 		} return deleted;
 	}
 
+//	@Override
+//	public List<Solution> getSolutionByLanguage(Integer lId) {
+//		if (! lRepo.existsById(lId)) {
+//			return null;
+//		} List<Solution> solutions = sRepo.findByLanguage_Id(lId);
+//		return solutions;
+//	}
 	@Override
-	public List<Solution> getSolutionByLanguage(Integer lId) {
-		if (! lRepo.existsById(lId)) {
-			return null;
-		} List<Solution> solutions = sRepo.findByLanguage_Id(lId);
+	public List<Solution> getSolutionByLanguage(String keyword) {
+		keyword = '%' + keyword + '%';
+		List<Solution> solutions = sRepo.findByLanguage_NameLike(keyword);
 		return solutions;
 	}
+	
+//	public List<Algorithm> findByTitleDescLike(String keyword) {
+//		keyword = "%" + keyword + "%";
+//		return aRepo.findByTitleLikeOrDescriptionLike(keyword, keyword);
+//	}
 
 	
 }
