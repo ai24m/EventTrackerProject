@@ -8,13 +8,17 @@ import { AlgorithmService } from './services/algorithm.service';
 import { HomeComponent } from './components/home/home.component';
 import { AlgorithmComponent } from './components/algorithm/algorithm.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { TrackerComponent } from './components/tracker/tracker.component';
+import { DatePipe } from '@angular/common';
+import { TrackerService } from './services/tracker.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AlgorithmComponent,
-    NavbarComponent
+    NavbarComponent,
+    TrackerComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +26,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     HttpClientModule,
   ],
   providers: [
-    AlgorithmService
+    AlgorithmService,
+    TrackerService,
+    // rememeber to add each service and pipe injection HERE!
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

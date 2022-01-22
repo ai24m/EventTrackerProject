@@ -24,8 +24,8 @@ import com.skilldistillery.algorithmpractice.services.SolutionService;
 
 @RestController 
 @RequestMapping("api")
-//@CrossOrigin({"*", "http://localhost:4202"})
-@CrossOrigin({"*", "http://localhost:57448"})
+@CrossOrigin({"*", "http://localhost:4202"})
+//@CrossOrigin({"*", "http://localhost:57448"})
 
 public class SolutionController {
 	

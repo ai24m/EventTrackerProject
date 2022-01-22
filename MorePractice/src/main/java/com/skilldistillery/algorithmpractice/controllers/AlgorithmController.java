@@ -32,7 +32,7 @@ public class AlgorithmController {
 	}
 	
 	@GetMapping("algorithms/find/{id}")
-	public Algorithm findAlgorithmById(@PathVariable Integer id, @PathVariable Algorithm a,
+	public Algorithm findAlgorithmById(@PathVariable Integer id,
 			HttpServletResponse res) {
 		Algorithm algorithm = aSvc.findAlgorithmById(id);
 		if (algorithm == null) {

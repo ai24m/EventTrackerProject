@@ -38,6 +38,16 @@ export class AlgorithmComponent implements OnInit {
     this.selected = algorithm;
   }
 
+  trackerRoute(id: number){
+    const url = '/algorithms/trackers/' + id;
+    this.router.navigateByUrl(url);
+  }
+
+  solutionRoute(id: number){
+    const url = '/algorithms/solutions/' + id;
+    this.router.navigateByUrl(url);
+  }
+
   // loadTrackers(id: number) {
   //   this.trackerService.index(id).subscribe(
   //     tracker => this.trackers = tracker,
