@@ -12,6 +12,9 @@ import { TrackerComponent } from './components/tracker/tracker.component';
 import { DatePipe } from '@angular/common';
 import { TrackerService } from './services/tracker.service';
 import { FormsModule } from '@angular/forms';
+import { SolutionComponent } from './components/solution/solution.component';
+import { SolutionService } from './services/solution.service';
+import { NotfoundComponent } from './components/notfound/notfound.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,9 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     AlgorithmComponent,
     NavbarComponent,
-    TrackerComponent
+    TrackerComponent,
+    SolutionComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +35,7 @@ import { FormsModule } from '@angular/forms';
   providers: [
     AlgorithmService,
     TrackerService,
-    // rememeber to add each service and pipe injection HERE!
+    SolutionService,// rememeber to add each service and pipe injection HERE!
     DatePipe
   ],
   bootstrap: [AppComponent]

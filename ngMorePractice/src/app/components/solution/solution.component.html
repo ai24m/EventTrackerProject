@@ -1,0 +1,19 @@
+<div class="col-lg-12"><hr></div> <!-- gray separator line -->
+  <div *ngIf='selected' class="algorithmsAll" class="col-lg-12">
+    <h1>ALGORITHM </h1>
+    <h3>See Our Sample Solutions</h3>
+    <div id="algorithmDiv">
+      <ul>
+          <li>{{selected.title}} &#9658; Difficulty: {{selected.rating}}</li>
+          <li>{{selected.description}}</li>
+          <pre>{{selected.sample}}</pre></ul></div></div>
+    <!-- end algorithm + trackers list  -->
+    <!-- Slideshow container -->
+    <div class="slideshow-container">
+    <!-- Full-width images with number and caption text -->
+    <div *ngFor="let sol of solutions">
+        <h4>Language - {{sol.language.name}}</h4>
+        <img src='assets/{{sol.imageUrl}}' class="img-responsive" width="80%"></div>
+
+
+

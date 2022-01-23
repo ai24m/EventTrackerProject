@@ -43,7 +43,7 @@ public class SolutionController {
 		} return algorithm.getSolutions();
 	}
 	
-	@GetMapping("algorithms/{id}/solutions/{sId}")
+	@GetMapping("algorithms/solutions/{sId}")
 	public Solution findSolutionById(@PathVariable Integer sId, HttpServletResponse res) {
 		Solution solution = sSvc.findSolutionById(sId);
 		if (solution == null) {
