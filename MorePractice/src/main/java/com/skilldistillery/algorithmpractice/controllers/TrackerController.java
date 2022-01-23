@@ -41,20 +41,32 @@ public class TrackerController {
 	@Autowired 
 	private AlgorithmService aSvc;
 	
-	@GetMapping("users/{userId}/trackers/{tId}")
-	public Tracker findTrackerById(@PathVariable Integer userId, 
-			@PathVariable Integer tId, 
+//	@GetMapping("users/{userId}/trackers/{tId}")
+//	public Tracker findTrackerById(@PathVariable Integer userId, 
+//			@PathVariable Integer tId, 
+//			HttpServletResponse res) {
+//		User user = uSvc.findUserById(userId);
+//		if (user == null) {
+//			res.setStatus(404);
+//		} else {
+//			Tracker tracker = tSvc.findTrackerById(tId); 
+//			if (tracker.getUpdatedAt().getDayOfMonth() == 0) {
+//				
+//			};
+//			return tracker;
+//		} return null;
+//	}
+	@GetMapping("/algorithms/trackers/{tId}")
+	public Tracker findTrackerById(@PathVariable Integer tId, 
 			HttpServletResponse res) {
-		User user = uSvc.findUserById(userId);
-		if (user == null) {
-			res.setStatus(404);
-		} else {
 			Tracker tracker = tSvc.findTrackerById(tId); 
-			if (tracker.getUpdatedAt().getDayOfMonth() == 0) {
-				
-			};
-			return tracker;
-		} return null;
+			if (tracker == null) {
+				res.setStatus(404);
+				return null;
+			} else {
+				res.setStatus(201);
+				return tracker;
+			}
 	}
 	
 //	@GetMapping("/find/algorithms/{id}/trackers/")

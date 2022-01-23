@@ -24,6 +24,18 @@ export class TrackerService {
     );
   }
 
+  show(tId: number): Observable<Tracker> {
+    // /algorithms/trackers/{tId}
+    let endPoints = `/algorithms/trackers/${tId}`;
+    return this.http.get<Tracker>(this.url + endPoints).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(() => new Error('TodoService.show() error'));
+      })
+    );
+  }
+
+
   create(tracker: Tracker, userId: number, id: number): Observable<Tracker> {
     let endPoints = `users/${userId}/algorithms/${id}/trackers`;
     return this.http.post<Tracker>(this.url + endPoints, tracker).pipe(

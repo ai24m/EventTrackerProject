@@ -16,7 +16,8 @@ export class TrackerComponent implements OnInit {
   tracker: Tracker = new Tracker();
   algorithms: Algorithm[] = [];
   selected: Algorithm | null = null;
-  editTracker = false;
+  selectedT: Tracker | null = null;
+
 
   constructor(private trackerService: TrackerService,
     private algoService: AlgorithmService,
@@ -41,48 +42,28 @@ export class TrackerComponent implements OnInit {
       } else {
         this.router.navigateByUrl('notfound');
       }
-      //  let id = this.route.snapshot.params['id'];
-      //  let todo = this.todoService.show(id);
-      //  this.selected = todo;
     }
-
-
-
-
-    // let getAlgorithmId = this.route.snapshot.paramMap.get('id');
-    // console.log(getAlgorithmId);
-    // if (getAlgorithmId != null) { //if algorithm is not null find all trackers[] associated
-    //   let id = Number.parseInt(getAlgorithmId);
-    //   if (!isNaN(id)) {
-    //     this.algoService.show(id).subscribe({
-    //       next: (algo) => {
-    //         this.algorithm = algo;
-    //         this.loadTrackers(id);
-    //       },
-    //       error: (fail) => {
-    //         console.error('Load Algorithm error')}
-    //       })
-    //   }
-    //   this.trackerService.index(id).subscribe({
-    //     next: (allTrackers) => {
-    //       this.trackers = allTrackers;
-    //     },
-    //     error: (fail) => {
-    //       console.error('TrackerListComponent.ngoninit()')
-    //       // this.router.navigateByUrl('notfound'); //fall through in app router
-    //     }
-    //   })
-    // }
   }
 
-  // loadAlgorithm() {
-  //   this.algoService.index().subscribe(
-  //     algo => this.algorithms = algo,
-  //     err => console.error('Reload error' + err)
-  //   );
-  // }
+  showDiv = {
+    addTracker: false,
+    editTracker: false,
+    deleteTracker: false,
+  }
 
-  loadTracker() {
+  pass = false;
+
+  displayTracker(track: Tracker) {
+    // this.trackerService.show(track.id).subscribe({
+    //   next: (tracker) => {
+    //     this.selectedT = tracker;
+    //     console.log(this.selectedT);
+    //   }
+    // })
+    this.selectedT = track;
+  }
+
+  loadAlgorithm() {
     this.algoService.index().subscribe(
       algo => this.algorithms = algo,
       err => console.error('Reload error' + err)
@@ -101,7 +82,7 @@ export class TrackerComponent implements OnInit {
     this.trackerService.create(tracker, userId, id).subscribe(
       success => {
         this.newTracker = new Tracker();
-        this.loadTrackers(id);
+        this.ngOnInit();
       },
       err => console.error('Addtodo error' + err)
     );
@@ -111,18 +92,22 @@ export class TrackerComponent implements OnInit {
     let userId = 1;
     this.trackerService.update(tracker, userId, id, tId).subscribe({
       next: (tracker) => {
-        // if (goToDetails) { this.selected = tracker; }
-        this.loadTrackers(id);
+        this.ngOnInit();
       },
       error: (fail) => { console.error('Error updating' + fail);}
     });
   }
 
-  deleteTracker(id: number, tId: number) {
+  destroyTracker(id: number, tId: number) {
     let userId = 1;
     this.trackerService.destroy(userId, id, tId).subscribe({
-      next: () => { this.loadTrackers(id)},
-      error: () => { console.error('Destroy component.ts')}
+      next: () => {
+        this.loadTrackers(id),
+        this.ngOnInit();
+      },
+      error: () => {
+        console.error('Destroy component.ts')
+      }
     });
   }
 }
