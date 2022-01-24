@@ -5,6 +5,23 @@ body {
   font-weight: 300;
   /* max-width: 80%;} */}
 
+  ul {
+    list-style-type: none;
+    padding: 0%;}
+
+    input[type=submit] {
+      color:#C7B6DC;
+      font-weight: bold;
+      padding:5px 15px;
+      margin-right: 5%;
+      background: white;
+      border:3px solid #C7B6DC;
+      cursor:pointer;
+      /* -webkit-border-radius: 5px; */
+      border-radius: 5px;
+      width: 30%;
+  }
+
 h1,
 h2,
 h3,

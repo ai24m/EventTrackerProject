@@ -1,26 +1,44 @@
-<div class="col-lg-12"><hr></div> <!-- gray separator line -->
-  <div *ngIf='!selected' id="algorithmsAll" class="col-lg-12">
-    <h1>ALGORITHM </h1>
-    <h3>Sample Questions</h3>
-    Check these questions out and track your progress on how you do:
-    <div id="algorithmDiv">
-      <ul *ngFor="let algo of algorithms">
-          <li (click) = 'displayAlgorithm(algo)' style="cursor: context-menu;">{{algo.title}} &#9658; Difficulty: {{algo.rating}}</li>
-          <li>{{algo.description}}</li>
-          <pre>{{algo.sample}}</pre>
-          <input type="submit" name="button" value="Trackers" (click)="trackerRoute(algo.id)">
-          <input type="submit" name="button" value="Solutions" (click)="solutionRoute(algo.id)"></ul></div>
+<div id="side-nav" class="sidenav">
+  <div class="sidenav-content">
+    <!-- <form action=""> -->
+      <div class="input-group md-form form-sm form-2 pl-0">
+        <input class="form-control my-0 py-1 red-border" type="text" placeholder="Search" aria-label="Search">
+        <div class="input-group-append">
+          <button class="input-group-text red lighten-3" id="basic-text1">
+            <span class="lnr lnr-magnifier"></span>
+          </button>
+        </div>
+      </div>
+  </div>
+  </div>
+  <div class="jumbotron d-flex align-items-center">
+  <div class="container" style="display: flex; justify-content:center; align-items:center;">
+    <div class="display-1 mb-4">
 
-          <!-- <a [routerLink]="['/algorithms/trackers/', 'algo.id']">Trackers</a> -->
-          <!-- <a [routerLink]="['/algorithms/solutions/', 'algo.id']">Solutions</a> -->
 
-<!-- end of algorithm list  -->
-<!-- displayAlgorithm -->
-    <div *ngIf='selected' class='algorithmDisplay'>
-      <!-- <label for="algorithmId"><span>Id {{selected.id}}</span></label> -->
-        <ul>
-          <!-- <li>{{selected.title}} &#9658; Difficulty: {{selected.rating}}</li>
-          <li>{{selected.description}}</li>
-          <pre>{{selected.sample}}</pre> -->
-          <input type="submit" name="button" value="Return" (click)="selected=null"></ul></div>
-<!-- end of displayAlgorithm -->
+              <div class="col-lg-12"><hr></div> <!-- gray separator line -->
+                <div *ngIf='!selected' id="algorithmsAll" class="col-lg-12">
+                  <h1>ALGORITHMS</h1>
+                  <h3 style="font-size: 200%;">Sample Questions</h3>
+                  <p style="font-size: 150%; font-weight: bold">Check these questions out and track your progress on how you do:</p>
+                  <div id="algorithmDiv">
+                    <ul *ngFor="let algo of algorithms" style="font-size: 150%; font-weight: bold; border: 5px white solid; padding: 3%;">
+                        <li (click) = 'displayAlgorithm(algo)' style="cursor: context-menu;">{{algo.title}} &#9658; Difficulty: {{algo.rating}}</li>
+                        <li>{{algo.description}}</li>
+                        <pre>{{algo.sample}}</pre>
+                        <li><input type="submit" name="button" value="Trackers" (click)="trackerRoute(algo.id)"></li>
+                        <li><input type="submit" name="button" value="Solutions" (click)="solutionRoute(algo.id)"></li></ul></div>
+              <!-- end of algorithm list  -->
+              <!-- displayAlgorithm -->
+                  <div *ngIf='selected' class='algorithmDisplay'>
+                      <ul>
+                        <input type="submit" name="button" value="Return" (click)="selected=null"></ul></div>
+              <!-- end of displayAlgorithm -->
+            </div>
+            <div class="triangle triangle-1">
+              <img src="assets/css/obj_triangle.png" alt="">
+            </div>
+            <div class="triangle triangle-4">
+              <img src="assets/css/obj_triangle.png" alt="">
+            </div>
+            </div>
