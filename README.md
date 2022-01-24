@@ -5,13 +5,11 @@ The More Practice, Algorithm Practice application was designed to track the perf
 
 The end goal of the EventTrackerProject was to become more comfortable creating JPA projects joined with Spring Boot apps to publish a working REST API (Application Programming Interface) via the web. The first phase consisted of configuring the database with MySQL workbench, mapping the entities and testing within the JPA, creating the controller logic with basic CRUD operators using Spring Data JPA repository and service, and finally testing the REST API routes with Postman before deployment. The second phase was the implementation of HTML and JavaScript, where scripts were added to a web application and asynchronous requests were sent to Java controllers with JavaScript's XMLHttpRequest Consume and JSON responses to POST/PUT/DELETE functions. 
 
+<img height="400" width="580" src="https://github.com/ai24m/EventTrackerProject/blob/main/DB/algorithmpracticedbschema.png"/>
+
 
 https://user-images.githubusercontent.com/89150394/150013731-992e04fd-ff9d-4c01-b1d0-d0022ee4c146.mov
 
-
-
-
-<img height="400" width="580" src="https://github.com/ai24m/EventTrackerProject/blob/main/DB/algorithmpracticedbschema.png"/>
 
 Angular Deployment: 
 
