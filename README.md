@@ -14,6 +14,9 @@ https://user-images.githubusercontent.com/89150394/150013731-992e04fd-ff9d-4c01-
 <img height="400" width="580" src="https://github.com/ai24m/EventTrackerProject/blob/main/DB/algorithmpracticedbschema.png"/>
 
 
+[![Angular Deployment](img width="929" alt="Screen Shot 2022-01-24 at 12 57 50 PM" src="https://user-images.githubusercontent.com/89150394/150855498-06fb047f-d7f9-4f64-a65e-9c613ccaaa73.png")](http://3.22.135.135:8080/MorePractice/#/home)
+
+
 ## REST API Reference
 | Return Type      | HTTP Method | URI                  | Purpose            |
 |------------------|-------------|----------------------|----------------------------------|
