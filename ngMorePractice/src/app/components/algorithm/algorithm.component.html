@@ -23,11 +23,11 @@
                   <p style="font-size: 150%; font-weight: bold">Check these questions out and track your progress on how you do:</p>
                   <div id="algorithmDiv">
                     <ul *ngFor="let algo of algorithms" style="font-size: 150%; font-weight: bold; border: 5px white solid; padding: 3%;">
-                        <li (click) = 'displayAlgorithm(algo)' style="cursor: context-menu;">{{algo.title}} &#9658; Difficulty: {{algo.rating}}</li>
+                        <li (click) = 'displayAlgorithm(algo)' style="cursor: context-menu; color: white;">{{algo.title}} &#9658; Difficulty: {{algo.rating}}</li>
                         <li>{{algo.description}}</li>
                         <pre>{{algo.sample}}</pre>
-                        <li><input type="submit" name="button" value="Trackers" (click)="trackerRoute(algo.id)"></li>
-                        <li><input type="submit" name="button" value="Solutions" (click)="solutionRoute(algo.id)"></li></ul></div>
+                        <input style="display: inline-block;"  type="submit" name="button" value="Trackers" (click)="trackerRoute(algo.id)">
+                        <input style="display: inline-block;"  type="submit" name="button" value="Solutions" (click)="solutionRoute(algo.id)"></ul></div>
               <!-- end of algorithm list  -->
               <!-- displayAlgorithm -->
                   <div *ngIf='selected' class='algorithmDisplay'>
