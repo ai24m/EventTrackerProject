@@ -15,6 +15,8 @@ import { FormsModule } from '@angular/forms';
 import { SolutionComponent } from './components/solution/solution.component';
 import { SolutionService } from './services/solution.service';
 import { NotfoundComponent } from './components/notfound/notfound.component';
+import { SolutionSComponent } from './components/solution-s/solution-s.component';
+import { TrackerSComponent } from './components/tracker-s/tracker-s.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
     NavbarComponent,
     TrackerComponent,
     SolutionComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    SolutionSComponent,
+    TrackerSComponent
   ],
   imports: [
     BrowserModule,
