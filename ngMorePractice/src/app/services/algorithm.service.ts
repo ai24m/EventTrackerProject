@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Algorithm } from '../models/algorithm';
 
 @Injectable({
@@ -10,7 +11,9 @@ export class AlgorithmService {
 
   constructor(private http: HttpClient) { }
 
-  private url = 'http://localhost:8083/api/';
+  private baseUrl = 'http://localhost:8083/';
+  // private url = this.baseUrl + 'api/';
+  private url = environment.baseUrl + 'api/';
 
   index() {
     let endPoints = 'algorithms'

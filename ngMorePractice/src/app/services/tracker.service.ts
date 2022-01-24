@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Tracker } from '../models/tracker';
 
 @Injectable({
@@ -11,7 +12,9 @@ export class TrackerService {
 
   constructor(private http: HttpClient, private datePipe: DatePipe) { }
   private baseUrl = 'http://localhost:8083/';
-  private url = this.baseUrl + 'api/';
+  // private url = this.baseUrl + 'api/';
+  private url = environment.baseUrl + 'api/';
+
 
   index(id: number): Observable<Tracker[]> {
     console.log(id);

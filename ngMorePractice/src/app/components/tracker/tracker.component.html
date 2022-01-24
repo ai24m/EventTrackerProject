@@ -18,44 +18,44 @@
 
 
         <div class="col-lg-12"><hr></div> <!-- gray separator line -->
-          <div *ngIf='selected' class="algorithmsAll" class="col-lg-12">
+          <div *ngIf='selected' class="algorithmsAll" class="col-lg-12" style="max-width: 85%; font-size: 100%;">
             <!-- <h1>TRACKERS </h1> -->
             <h1>Track Algorithm</h1>
-            <p style="font-size: 150%; font-weight: bold">Add, Update, or Delete your progress:</p>
+            <p style=" font-weight: bold">Add, Update, or Delete your progress:</p>
             <div id="algorithmDiv">
-              <ul style="font-size: 150%; font-weight: bold; border: 5px white solid; padding: 3%;">
-                  <li>{{selected.title}} &#9658; Difficulty: {{selected.rating}}</li>
+              <ul style="font-size: 50%; font-weight: bold; border: 5px white solid; padding: 3%;">
+                  <li style="color: white">{{selected.title}} &#9658; Difficulty: {{selected.rating}}</li>
                   <li>{{selected.description}}</li>
                   <pre>{{selected.sample}}</pre>
-                  <li><input type="submit" name="button" value="Add Tracker" *ngIf="!selectedT" (click)="showDiv.addTracker = !showDiv.addTracker; showDiv.deleteTracker = false; showDiv.editTracker = false"></li></ul>
+                  <li style="font-size: 70%;"><input type="submit" name="button" value="Add Tracker" *ngIf="!selectedT" (click)="showDiv.addTracker = !showDiv.addTracker; showDiv.deleteTracker = false; showDiv.editTracker = false"></li></ul>
                   <!-- end algorithm + trackers list  -->
                   <!-- add tracker form -->
             <div *ngIf='showDiv.addTracker'>
-              <form class='addTrackerForm' style="font-size: 150%; font-weight: bold; border: 5px white solid; padding: 8%; width: 80%; margin-bottom: 2%;">
-                <textarea style="width: 90%; font-size: 100%; border: 5px white solid; border-radius: 5px; padding: 3%; overflow: hidden;" name="task" [(ngModel)]="newTracker.content" placeholder="Enter new . . ."></textarea>
+              <form class='addTrackerForm' style="font-weight: bold; border: 5px white solid; padding: 8%; margin-bottom: 2%;">
+                <textarea style=" font-size: 200%; border: 5px white solid; border-radius: 5px; padding: 3%; overflow: hidden;" name="task" [(ngModel)]="newTracker.content" placeholder="Enter new . . ."></textarea>
                 <input style="display: inline-block;"  type='submit' value='Confirm' (click)='[createTracker(newTracker, selected.id), showDiv.addTracker = !showDiv.addTracker]'>
                 <input style="display: inline-block;"  type='submit' value='Cancel' (click)='selected = null'>
               </form>
             </div>
             <div *ngFor="let track of trackers">
               <div *ngIf='trackers && !selectedT'>
-                <ul style="font-size: 150%; font-weight: bold; border: 5px white solid; padding: 8%; width: 80%;">
-                  <li>{{track.createdAt}}</li>
-                  <li>{{track.content}}</li>
+                <ul style="font-size: 40%; font-weight: bold; border: 5px white solid; padding: 5%;">
+                  <li style="display: block; text-align: right;">{{track.createdAt}}</li>
+                  <li style="margin-bottom: 3%;">{{track.content}}</li>
                   <input type="submit" name="button" value="Edit" (click)="showDiv.editTracker = !showDiv.editTracker; showDiv.deleteTracker = false; showDiv.addTracker = false; displayTracker(track)">
-                  <input type="submit" name="button" value="Delete" (click)="showDiv.editTracker = false; showDiv.deleteTracker = !showDiv.deleteTracker; showDiv.addTracker = false"></ul></div></div></div>
+                  <input type="submit" name="button" value="Delete" (click)="showDiv.editTracker = false; showDiv.deleteTracker = !showDiv.deleteTracker; showDiv.addTracker = false; displayTracker(track)"></ul></div></div></div>
                   <!-- trackers edit + delete -->
                   <!-- end trackers edit + delete -->
         <div *ngIf="selectedT">
                   <div *ngIf='showDiv.editTracker && selectedT'>
-                  <form class='editform' style="font-size: 150%; font-weight: bold; border: 5px white solid; padding: 3%;">
-                    <textarea style="width: 90%; font-size: 100%; border: 5px white solid; border-radius: 5px; padding: 3%; overflow: hidden;" name="content" [(ngModel)]="selectedT.content" placeholder="track.content"></textarea><br>
+                  <form class='editform' style="font-size: 40%; font-weight: bold; border: 5px white solid; padding: 3%;">
+                    <textarea style="width: 70%; font-size: 100%; border: 5px white solid; border-radius: 5px; padding: 3%; overflow: hidden;" name="content" [(ngModel)]="selectedT.content" placeholder="track.content"></textarea><br>
                     <input style="display: inline-block;" type='submit' value='Save Edits' (click)='[updateTracker(selectedT, selected.id, selectedT.id), showDiv.editTracker = !showDiv.editTracker]'>
                     <input style="display: inline-block;" type='submit' value='Cancel' (click)='selectedT = null'>
                   </form>
                 </div>
-                <div *ngIf='showDiv.deleteTracker'>
-                  <form class='deleteform' style="font-size: 150%; font-weight: bold; border: 5px white solid; padding: 3%;">
+                <div *ngIf='showDiv.deleteTracker && selectedT'>
+                  <form class='deleteform' style="font-size: 40%;font-weight: bold; border: 5px white solid; padding: 3%;">
                   <h3 style='color:red'>Are you sure?</h3>
                     <input type='button' value='Delete' (click)='[destroyTracker(selected.id, selectedT.id), showDiv.deleteTracker = !showDiv.deleteTracker]'><br><br>
                     <input type='button' value='Cancel' (click)='selectedT = null'></form></div></div></div>

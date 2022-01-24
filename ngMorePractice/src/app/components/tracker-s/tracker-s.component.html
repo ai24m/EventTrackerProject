@@ -15,19 +15,19 @@
   <div class="container" style="display: flex; justify-content:center; align-items:center;">
     <div class="display-1 mb-4">
 
-      <div class="display-1 mb-4"><hr></div> <!-- gray separator line -->
-      <div class="display-1 mb-4">
+      <div><hr></div> <!-- gray separator line -->
+      <div style="max-width: 75%;">
         <h1>TRACKERS </h1>
         <h3>Check your progress or review notes! </h3>
 
         <div id="algorithmDiv"  *ngFor='let algo of algorithms'>
-          <ul style="font-size: 150%; font-weight: bold; padding: 3%;">
+          <ul style="font-weight: bold; font-size: 50%;padding: 3%;">
             <li>{{algo.title}} &#9658; Difficulty: {{algo.rating}}</li>
-            <li style="width: 80%;">{{algo.description}}</li>
+            <li style="width: 80%; font-size: 70%; margin-bottom: 2%;">{{algo.description}}</li>
             <pre style="width: 80%;">{{algo.sample}}</pre></ul>
         <div *ngFor="let track of trackers" >
-          <ul style="font-size: 150%; font-weight: bold; border: 5px white solid; padding: 8%; width: 80%;">
-            <li>{{track.createdAt}}</li>
+          <ul style="margin-left: 4%; font-weight: bold; font-size: 40%; border: 5px white solid; padding: 8%; width: 70%;">
+            <li style="text-align: right;">{{track.createdAt}}</li>
             <li>{{track.content}}</li></ul>
 <div class="triangle triangle-1">
     <img src="assets/css/obj_triangle.png" alt="">

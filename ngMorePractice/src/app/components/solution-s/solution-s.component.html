@@ -16,16 +16,16 @@
     <div class="display-1 mb-4">
 
       <div class="display-1 mb-4"><hr></div> <!-- gray separator line -->
-      <div class="display-1 mb-4">
+      <div class="display-1 mb-4" style="max-width: 75%;">
         <h1>SOLUTIONS </h1>
         <h3>See Our Sample Solutions</h3>
 
         <div id="algorithmDiv"  *ngFor='let algo of algorithms'>
-          <ul style="font-size: 150%; font-weight: bold;padding: 3%;">
-            <li>{{algo.title}} &#9658; Difficulty: {{algo.rating}}</li>
+          <ul style="font-size: 40%; border: 5px solid white; font-weight: bold;padding: 3%;">
+            <li style="color: white; margin-bottom: 3%;">{{algo.title}} &#9658; Difficulty {{algo.rating}}</li>
             <li style="width: 80%;">{{algo.description}}</li>
-            <pre style="width: 80%;">{{algo.sample}}</pre></ul>
-          <div *ngFor="let sol of solutions" >
+            <pre style="width: 80%; margin-bottom: 2%; margin-top: 2%;">{{algo.sample}}</pre></ul>
+          <div *ngFor="let sol of solutions" style="margin-left: 5%;">
               <h4>{{sol.language.name}}</h4>
               <img src='assets/{{sol.imageUrl}}' class="img-responsive" width="80%"></div></div> </div></div>
   <div class="triangle triangle-1">
